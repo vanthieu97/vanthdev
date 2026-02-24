@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import LunarNewYearCountdownPage from '@/app/lunar-new-year-countdown/page';
 
 export default function Home() {
-  redirect('/lunar-new-year-countdown');
+  return <LunarNewYearCountdownPage />;
 }
