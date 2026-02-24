@@ -9,7 +9,7 @@ A Next.js (TypeScript) app that counts down to the next Lunar New Year in your c
 - **Weeks remaining** — Displays how many full weeks are left until the next Lunar New Year (above the main countdown).
 - **At midnight** — When the countdown reaches zero, a fireworks animation plays.
 - **Days 1–3** — After the fireworks, the app shows "First / Second / Third day of Lunar New Year" with 初一 / 初二 / 初三.
-- **From day 4** — Shows the countdown to the *next* Lunar New Year and the weekly count to that date.
+- **From day 4** — Shows the countdown to the _next_ Lunar New Year and the weekly count to that date.
 - **Light/dark theme** — Toggle with the button in the top-right.
 
 ## How to run
@@ -33,12 +33,12 @@ npm start
 
 Use URL query parameters on `/lunar-new-year-countdown`:
 
-| URL | What you see |
-|-----|----------------|
+| URL                                       | What you see                                                                            |
+| ----------------------------------------- | --------------------------------------------------------------------------------------- |
 | `/lunar-new-year-countdown?test=midnight` | **10-second countdown** (00:00:00:10 → 0), then **fireworks**, then **First day** view. |
-| `?test=day1` | First day of Lunar New Year (初一). |
-| `?test=day2` | Second day (初二). |
-| `?test=day3` | Third day (初三). |
+| `?test=day1`                              | First day of Lunar New Year (初一).                                                     |
+| `?test=day2`                              | Second day (初二).                                                                      |
+| `?test=day3`                              | Third day (初三).                                                                       |
 
 ## Project structure
 
@@ -53,4 +53,5 @@ All app code lives under `src/`:
 - `src/lib/lunar.ts` — Data (countries, LNY dates, strings) and pure logic (timezone, getNextLNY, etc.).
 
 Lunar New Year dates are fixed for 2025–2036 (Gregorian). Timezones use IANA names (e.g. `Asia/Shanghai`, `Asia/Ho_Chi_Minh`).
+
 # vanthdev

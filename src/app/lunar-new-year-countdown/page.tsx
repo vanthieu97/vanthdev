@@ -14,6 +14,7 @@ import {
   isLNYMidnightMoment,
   type Country,
 } from '@/lib/lunar';
+import './lunar.css';
 
 const FIREWORKS_COLORS = ['#c41e3a', '#e63946', '#d4af37', '#f4e4bc', '#ff6b6b', '#ffd93d'];
 
@@ -60,11 +61,11 @@ export default function LunarNewYearCountdownPage() {
   }, []);
 
   useEffect(() => {
-    const stored = (typeof window !== 'undefined' && window.localStorage.getItem('theme')) as 'dark' | 'light' | null;
-    if (stored === 'dark' || stored === 'light') {
-      setTheme(stored);
-      document.documentElement.setAttribute('data-theme', stored);
-    }
+    const stored = (typeof window !== 'undefined' && window.localStorage.getItem('theme')) as
+      | 'dark'
+      | 'light'
+      | null;
+    if (stored === 'dark' || stored === 'light') setTheme(stored);
   }, []);
 
   useEffect(() => {
@@ -149,10 +150,7 @@ export default function LunarNewYearCountdownPage() {
       ctx.fillStyle = 'rgba(13, 10, 8, 0.06)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       if (Math.random() < 0.08) {
-        createFirework(
-          Math.random() * canvas.width,
-          canvas.height * (0.3 + Math.random() * 0.4)
-        );
+        createFirework(Math.random() * canvas.width, canvas.height * (0.3 + Math.random() * 0.4));
       }
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
@@ -201,7 +199,9 @@ export default function LunarNewYearCountdownPage() {
     (fireworksTransitionDone && lnyDay >= 1 && lnyDay <= 3);
   const showCountdown =
     !showLnyDaysView &&
-    ((lnyDay === 0 && nextLNY && !isMidnightMoment) || (lnyDay >= 4) || (isMidnightMoment && fireworksShown));
+    ((lnyDay === 0 && nextLNY && !isMidnightMoment) ||
+      lnyDay >= 4 ||
+      (isMidnightMoment && fireworksShown));
   const showCelebration = isMidnightMoment && fireworksShown && !fireworksTransitionDone;
   const showLnyDays = showLnyDaysView;
 
@@ -252,18 +252,19 @@ export default function LunarNewYearCountdownPage() {
   const toggleTheme = () => {
     const next = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
-    document.documentElement.setAttribute('data-theme', next);
     if (typeof window !== 'undefined') window.localStorage.setItem('theme', next);
   };
 
   if (!mounted) {
     return (
-      <div className="bg-pattern" aria-hidden="true" />
+      <div className="lunar-page">
+        <div className="bg-pattern" aria-hidden="true" />
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="lunar-page" data-theme={theme}>
       <div className="bg-pattern" aria-hidden="true" />
       <div className="lanterns" aria-hidden="true">
         <span className="lantern" />
@@ -370,7 +371,8 @@ export default function LunarNewYearCountdownPage() {
               <p className="next-year-hint">
                 {s.nextLNY(
                   getNextLNY(nowUtc, country.offset, testMidnightTimestamp.current)?.year ??
-                    getCurrentLNYMidnight(nowUtc, country.offset, testMidnightTimestamp.current)?.year ??
+                    getCurrentLNYMidnight(nowUtc, country.offset, testMidnightTimestamp.current)
+                      ?.year ??
                     '2027'
                 )}
               </p>
@@ -389,6 +391,6 @@ export default function LunarNewYearCountdownPage() {
       <footer className="footer">
         <p>{s.footer}</p>
       </footer>
-    </>
+    </div>
   );
 }

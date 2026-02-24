@@ -9,7 +9,9 @@ export const metadata: Metadata = {
     title: 'Lunar New Year Countdown',
     description: 'Countdown to Lunar New Year with country & timezone support.',
     type: 'website',
-    images: [{ url: '/lunar-og-image.png', width: 1200, height: 630, alt: 'Lunar New Year Countdown' }],
+    images: [
+      { url: '/lunar-og-image.png', width: 1200, height: 630, alt: 'Lunar New Year Countdown' },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -19,10 +21,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function LunarNewYearCountdownLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <Suspense fallback={<div className="bg-pattern" aria-hidden="true" />}>{children}</Suspense>;
+export default function LunarNewYearCountdownLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={<div className="bg-pattern" aria-hidden="true" />}>{children}</Suspense>
+  );
 }

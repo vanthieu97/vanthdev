@@ -1,5 +1,5 @@
-import { Suspense } from "react";
-import LunarNewYearCountdownPage from "@/app/lunar-new-year-countdown/page";
+import { Suspense } from 'react';
+import LunarNewYearCountdownPage from '@/app/lunar-new-year-countdown/page';
 
 export default function Home() {
   return (
