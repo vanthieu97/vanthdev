@@ -1,0 +1,281 @@
+/* Solar System – mô phỏng Mặt Trời và các hành tinh (UI tương tự lunar) */
+
+/* Full viewport, không scroll, không spacing */
+.solar-system-page {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  background: #0a0a12;
+  color: #f0f0f5;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.solar-system-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 20%, rgba(255, 180, 50, 0.08), transparent 50%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(100, 120, 200, 0.06), transparent),
+    radial-gradient(ellipse 80% 60% at 20% 80%, rgba(150, 100, 220, 0.05), transparent),
+    linear-gradient(180deg, #0a0a12 0%, #0d0e18 40%, #080810 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.solar-system-page .solar-system-stars {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='20' r='0.5' fill='%23fff' opacity='0.6'/%3E%3Ccircle cx='50' cy='5' r='0.5' fill='%23fff' opacity='0.4'/%3E%3Ccircle cx='80' cy='60' r='0.5' fill='%23fff' opacity='0.5'/%3E%3Ccircle cx='30' cy='70' r='0.5' fill='%23fff' opacity='0.3'/%3E%3Ccircle cx='90' cy='90' r='0.5' fill='%23fff' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.solar-system-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vmin;
+  height: 100vmin;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.solar-system-sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10vmin;
+  height: 10vmin;
+  margin-top: -5vmin;
+  margin-left: -5vmin;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff8e0,
+    #ffd54f 40%,
+    #ff9800 70%,
+    #e65100 100%
+  );
+  box-shadow:
+    0 0 5vmin rgba(255, 200, 80, 0.9),
+    0 0 10vmin rgba(255, 150, 50, 0.5),
+    inset -2px -2px 3vmin rgba(255, 200, 100, 0.4);
+  animation: solar-sun-pulse 4s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes solar-sun-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 5vmin rgba(255, 200, 80, 0.9),
+      0 0 10vmin rgba(255, 150, 50, 0.5),
+      inset -2px -2px 3vmin rgba(255, 200, 100, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 6vmin rgba(255, 220, 100, 1),
+      0 0 12vmin rgba(255, 180, 60, 0.6),
+      inset -2px -2px 3vmin rgba(255, 200, 100, 0.5);
+  }
+}
+
+.solar-system-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  transform-origin: center center;
+}
+
+.solar-system-planet {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  /* 3D: highlight từ phía mặt trời (trên-trái), tối ở mép đối diện */
+  box-shadow:
+    0 0 6px rgba(255, 255, 255, 0.25),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Orbit sizes: chừa mép để hành tinh ở rìa không bị cắt (radius + planet < 50%) */
+.solar-system-orbit[data-planet='mercury'] {
+  width: 22%;
+  height: 22%;
+  margin-left: -11%;
+  margin-top: -11%;
+  animation: solar-orbit 4s linear infinite;
+}
+.solar-system-orbit[data-planet='venus'] {
+  width: 29%;
+  height: 29%;
+  margin-left: -14.5%;
+  margin-top: -14.5%;
+  animation: solar-orbit 6s linear infinite;
+}
+.solar-system-orbit[data-planet='earth'] {
+  width: 36%;
+  height: 36%;
+  margin-left: -18%;
+  margin-top: -18%;
+  animation: solar-orbit 8s linear infinite;
+}
+.solar-system-orbit[data-planet='mars'] {
+  width: 44%;
+  height: 44%;
+  margin-left: -22%;
+  margin-top: -22%;
+  animation: solar-orbit 10s linear infinite;
+}
+.solar-system-orbit[data-planet='jupiter'] {
+  width: 56%;
+  height: 56%;
+  margin-left: -28%;
+  margin-top: -28%;
+  animation: solar-orbit 14s linear infinite;
+}
+.solar-system-orbit[data-planet='saturn'] {
+  width: 70%;
+  height: 70%;
+  margin-left: -35%;
+  margin-top: -35%;
+  animation: solar-orbit 18s linear infinite;
+}
+.solar-system-orbit[data-planet='uranus'] {
+  width: 82%;
+  height: 82%;
+  margin-left: -41%;
+  margin-top: -41%;
+  animation: solar-orbit 22s linear infinite;
+}
+.solar-system-orbit[data-planet='neptune'] {
+  width: 92%;
+  height: 92%;
+  margin-left: -46%;
+  margin-top: -46%;
+  animation: solar-orbit 26s linear infinite;
+}
+
+@keyframes solar-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hành tinh 3D: radial gradient (sáng 30% 30%, tối mép) giống mặt trời */
+.solar-system-planet[data-planet='mercury'] {
+  width: 7%;
+  height: 7%;
+  min-width: 5px;
+  min-height: 5px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #e0e0e0,
+    #b0b0b0 45%,
+    #808080 85%,
+    #5a5a5a 100%
+  );
+}
+.solar-system-planet[data-planet='venus'] {
+  width: 6.5%;
+  height: 6.5%;
+  min-width: 5px;
+  min-height: 5px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff4c4,
+    #e6c229 45%,
+    #c9a61d 85%,
+    #9a7b0f 100%
+  );
+}
+.solar-system-planet[data-planet='earth'] {
+  width: 6.5%;
+  height: 6.5%;
+  min-width: 5px;
+  min-height: 5px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #7eb8e8,
+    #4a90d9 45%,
+    #2d6cb0 85%,
+    #1a4a7a 100%
+  );
+}
+.solar-system-planet[data-planet='mars'] {
+  width: 6%;
+  height: 6%;
+  min-width: 5px;
+  min-height: 5px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #e05a2b,
+    #c1440e 45%,
+    #8b3008 85%,
+    #5a2005 100%
+  );
+}
+.solar-system-planet[data-planet='jupiter'] {
+  width: 12%;
+  height: 12%;
+  min-width: 10px;
+  min-height: 10px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #e0b060,
+    #c88b3a 40%,
+    #a66b2a 75%,
+    #6b4520 100%
+  );
+}
+.solar-system-planet[data-planet='saturn'] {
+  width: 10%;
+  height: 10%;
+  min-width: 8px;
+  min-height: 8px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #f0e6c8,
+    #e4d4a5 40%,
+    #c9b896 75%,
+    #a09070 100%
+  );
+}
+.solar-system-planet[data-planet='uranus'] {
+  width: 6%;
+  height: 6%;
+  min-width: 5px;
+  min-height: 5px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #8ed4f5,
+    #5eb9e8 45%,
+    #3a9bc9 85%,
+    #256b8f 100%
+  );
+}
+.solar-system-planet[data-planet='neptune'] {
+  width: 6%;
+  height: 6%;
+  min-width: 5px;
+  min-height: 5px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #4a7ee8,
+    #2e5fd4 45%,
+    #1e4099 85%,
+    #122860 100%
+  );
+}
