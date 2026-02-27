@@ -98,18 +98,24 @@ export default async function VietnamNewsPage() {
 
         <footer className="mt-20 pt-12 pb-6 border-t border-[#e8e6e3]">
           <div className="flex flex-col items-center gap-4">
-            <Link
-              href="https://vanthdev.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] text-[#1a1a1a] font-semibold text-sm no-underline hover:border-[#c41e3a]/30 hover:text-[#c41e3a] hover:shadow-[0_4px_12px_rgba(196,30,58,0.08)] transition-all duration-300"
-            >
-              <span className="text-base">✦</span>
-              vanthdev.com
-            </Link>
-            <p className="text-[#999] text-xs tracking-wide">
-              Tin tức được cập nhật liên tục
-            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link
+                href="/champions-league"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] text-[#1a1a1a] font-medium text-sm no-underline hover:border-[#1a237e]/30 hover:text-[#1a237e] transition-all duration-300"
+              >
+                ⚽ C1 Champions League
+              </Link>
+              <Link
+                href="https://vanthdev.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] text-[#1a1a1a] font-semibold text-sm no-underline hover:border-[#c41e3a]/30 hover:text-[#c41e3a] hover:shadow-[0_4px_12px_rgba(196,30,58,0.08)] transition-all duration-300"
+              >
+                <span className="text-base">✦</span>
+                vanthdev.com
+              </Link>
+            </div>
+            <p className="text-[#999] text-xs tracking-wide">Tin tức được cập nhật liên tục</p>
           </div>
         </footer>
       </div>
