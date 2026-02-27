@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Block committing env files that may contain secrets
+STAGED_ENV=$(git diff --cached --name-only --diff-filter=ACM | grep '\.env' | grep -v '\.env\.example' || true)
+if [ -n "$STAGED_ENV" ]; then
+  echo "❌ Cannot commit: the following env files may contain secrets:"
+  echo "$STAGED_ENV"
+  echo ""
+  echo "Remove them: git reset HEAD <file>"
+  exit 1
+fi
+
+# Optional: uncomment to run on every commit
+# npm run format:check && npm run lint
