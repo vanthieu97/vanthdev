@@ -1,10 +1,5 @@
-import { Suspense } from 'react';
-import LunarNewYearCountdownPage from '@/app/lunar-new-year-countdown/page';
+import VietnamNewsPage from '@/app/news/page';
 
 export default function Home() {
-  return (
-    <Suspense fallback={<div className="bg-pattern" aria-hidden="true" />}>
-      <LunarNewYearCountdownPage />
-    </Suspense>
-  );
+  return <VietnamNewsPage />;
 }
