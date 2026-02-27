@@ -16,7 +16,6 @@
   --font-ko: 'Noto Sans KR', var(--font-sans);
   --font-th: 'Noto Sans Thai', var(--font-sans);
 
-  min-height: 100vh;
   background: var(--bg-dark);
   color: var(--text);
   position: relative;

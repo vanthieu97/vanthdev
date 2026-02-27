@@ -71,26 +71,7 @@ export function ChampionsLeagueContent({ locale, useUrlSwitcher = false }: Champ
   const t = getC1Translations(locale);
 
   return (
-    <div className="min-h-screen flex flex-col overflow-y-auto relative">
-      {/* Gradient background */}
-      <div
-        className="fixed inset-0 -z-10"
-        style={{
-          background: 'linear-gradient(160deg, #0a0f1a 0%, #0f1525 35%, #121a2e 70%, #0d1220 100%)',
-        }}
-      />
-      {/* Subtle grid + glow */}
-      <div
-        className="fixed inset-0 -z-10 opacity-[0.12]"
-        style={{
-          backgroundImage: `
-            radial-gradient(ellipse 80% 50% at 50% 0%, rgba(120,180,255,0.3) 0%, transparent 50%),
-            radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)
-          `,
-          backgroundSize: '100% 100%, 20px 20px',
-        }}
-      />
-
+    <div className="min-h-screen flex flex-col overflow-y-auto relative bg-[#0a0f1a]">
       <div className="flex-1 flex flex-col justify-center min-h-screen relative max-w-6xl mx-auto px-4 py-8 md:py-12 w-full">
         {/* Language switcher - in flow on mobile, absolute on desktop (top-12 = 48px to match home) */}
         <div className="flex justify-end mb-4 md:absolute md:top-12 md:right-6 md:mb-0">

@@ -5,6 +5,9 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { LocaleProvider } from '@/contexts/locale-context';
 import { ThemeProvider } from '@/contexts/theme-context';
 import { ThemeInitScript } from '@/components/theme-init-script';
+import { ScrollToTop } from '@/components/scroll-to-top';
+import { ConditionalSiteFooter } from '@/components/conditional-site-footer';
+import { SiteFooter } from '@/components/site-footer';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -26,7 +29,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <LocaleProvider>
             {children}
+            <ConditionalSiteFooter>
+              <SiteFooter />
+            </ConditionalSiteFooter>
             {gaId && <GoogleAnalytics gaId={gaId} />}
+            <ScrollToTop />
             <Analytics />
             <SpeedInsights />
           </LocaleProvider>

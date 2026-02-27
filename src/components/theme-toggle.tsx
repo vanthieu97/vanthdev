@@ -14,7 +14,7 @@ export function ThemeToggle({ standalone = false }: ThemeToggleProps = {}) {
     <button
       type="button"
       onClick={toggleTheme}
-      className="rounded-md px-2.5 py-1 text-xs font-medium transition-colors inline-flex items-center justify-center
+      className="cursor-pointer rounded-md px-2.5 py-1 text-xs font-medium transition-colors inline-flex items-center justify-center
         text-[#6b6b6b] hover:bg-[#f5f5f5] hover:text-[#1a1a1a]
         dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white/80"
       aria-label={theme === 'dark' ? 'Bật sáng' : 'Bật tối'}

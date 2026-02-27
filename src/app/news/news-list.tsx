@@ -161,7 +161,7 @@ export default function NewsList({ initialArticles, initialNextPage }: Props) {
             <button
               type="button"
               onClick={handleLoadMore}
-              className="px-4 py-2 text-sm font-medium text-[#c41e3a] dark:text-amber-400 border border-[#c41e3a] dark:border-amber-400/50 rounded-lg hover:bg-[#fff0f2] dark:hover:bg-amber-400/10 transition-colors disabled:opacity-50"
+              className="cursor-pointer px-4 py-2 text-sm font-medium text-[#c41e3a] dark:text-amber-400 border border-[#c41e3a] dark:border-amber-400/50 rounded-lg hover:bg-[#fff0f2] dark:hover:bg-amber-400/10 transition-colors disabled:opacity-50"
             >
               Tải thêm tin
             </button>

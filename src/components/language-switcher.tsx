@@ -54,12 +54,12 @@ export function LanguageSwitcher({ className = '', variant = 'full', alternateUr
       {(['vi', 'en'] as const).map((l) => {
         const isActive = activeLocale === l;
         const baseClass = isLight
-          ? `rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+          ? `cursor-pointer rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
               isActive
                 ? 'bg-[#c41e3a]/10 text-[#c41e3a]'
                 : 'text-[#6b6b6b] hover:bg-[#f5f5f5] hover:text-[#1a1a1a]'
             }`
-          : `rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+          : `cursor-pointer rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
               isActive
                 ? 'bg-amber-500/20 text-amber-400'
                 : 'text-slate-400 hover:bg-white/5 hover:text-white/80'
