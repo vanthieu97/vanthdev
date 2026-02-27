@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useLocale, type Locale } from '@/hooks/useLocale';
+import { useLocale, type Locale } from '@/hooks/use-locale';
 
 const ENTRY_POINTS: Record<
   Locale,
@@ -37,16 +37,22 @@ export function HomeEntryPoints() {
           <Link
             key={href}
             href={href}
-            className="group flex items-start gap-4 p-5 md:p-6 rounded-2xl bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:border-[#e0e0e0] hover:-translate-y-0.5 text-left"
+            className="group flex items-start gap-4 p-5 md:p-6 rounded-2xl
+              bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee]
+              dark:bg-[#2d2d3d]/90 dark:border-[#4a4a5a]/60 dark:shadow-lg dark:shadow-black/20
+              transition-all duration-300
+              hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:border-[#e0e0e0] hover:-translate-y-0.5
+              dark:hover:border-[#5a5a6a] dark:hover:bg-[#333344]/95
+              text-left"
           >
             <span className="text-3xl md:text-4xl shrink-0" aria-hidden>
               {icon}
             </span>
             <div className="min-w-0">
-              <h3 className="font-semibold text-[#1a1a1a] text-base md:text-lg mb-0.5 group-hover:text-[#c41e3a] transition-colors">
+              <h3 className="font-semibold text-[#1a1a1a] dark:text-white/95 text-base md:text-lg mb-0.5 group-hover:text-[#c41e3a] dark:group-hover:text-amber-400 transition-colors">
                 {title}
               </h3>
-              <p className="text-[#6b6b6b] text-sm leading-relaxed">{desc}</p>
+              <p className="text-[#6b6b6b] dark:text-slate-400 text-sm leading-relaxed">{desc}</p>
             </div>
           </Link>
         ))}

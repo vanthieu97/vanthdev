@@ -1,8 +1,8 @@
 'use client';
 
-import { useLocaleContext } from '@/contexts/LocaleContext';
+import { useLocaleContext } from '@/contexts/locale-context';
 
-export type { Locale } from '@/contexts/LocaleContext';
+export type { Locale } from '@/contexts/locale-context';
 
 /**
  * Returns current locale from LocaleContext.

@@ -14,6 +14,8 @@ import {
   isLNYMidnightMoment,
   type Country,
 } from '@/lib/lunar';
+import { useTheme } from '@/contexts/theme-context';
+import { ThemeToggle } from '@/components/theme-toggle';
 import './lunar.css';
 
 const FIREWORKS_COLORS = ['#c41e3a', '#e63946', '#d4af37', '#f4e4bc', '#ff6b6b', '#ffd93d'];
@@ -32,7 +34,7 @@ export default function LunarNewYearCountdownPage() {
   const [now, setNow] = useState(() => Date.now());
   const [fireworksShown, setFireworksShown] = useState(false);
   const [fireworksTransitionDone, setFireworksTransitionDone] = useState(false);
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [timezoneHint, setTimezoneHint] = useState(() => `Timezone: ${COUNTRIES[0].zone}`);
 
@@ -58,14 +60,6 @@ export default function LunarNewYearCountdownPage() {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const stored = (typeof window !== 'undefined' && window.localStorage.getItem('theme')) as
-      | 'dark'
-      | 'light'
-      | null;
-    if (stored === 'dark' || stored === 'light') setTheme(stored);
   }, []);
 
   useEffect(() => {
@@ -249,12 +243,6 @@ export default function LunarNewYearCountdownPage() {
     }
   }
 
-  const toggleTheme = () => {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    if (typeof window !== 'undefined') window.localStorage.setItem('theme', next);
-  };
-
   if (!mounted) {
     return (
       <div className="lunar-page">
@@ -271,15 +259,9 @@ export default function LunarNewYearCountdownPage() {
         <span className="lantern" />
         <span className="lantern" />
       </div>
-      <button
-        type="button"
-        className="theme-toggle"
-        onClick={toggleTheme}
-        aria-label="Toggle light/dark mode"
-        title="Toggle light/dark mode"
-      >
-        {theme === 'dark' ? '☀️' : '🌙'}
-      </button>
+      <div className="lunar-theme-toggle">
+        <ThemeToggle standalone />
+      </div>
 
       <header className="header">
         <h1 className="title">

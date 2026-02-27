@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { fetchVietnamNews } from '@/lib/news';
-import NewsList from './NewsList';
+import { ThemeToggle } from '@/components/theme-toggle';
+import NewsList from './news-list';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 300;
@@ -15,7 +16,12 @@ function getTodayFormatted(): string {
   });
 }
 
-export default async function VietnamNewsPage() {
+type VietnamNewsPageProps = {
+  /** When true (embedded in home), hide top theme toggle */
+  embedded?: boolean;
+};
+
+export default async function VietnamNewsPage({ embedded }: VietnamNewsPageProps = {}) {
   let data;
   let error: string | null = null;
 
@@ -70,12 +76,17 @@ export default async function VietnamNewsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
+    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#0a0f1a]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-6xl mx-auto px-4 py-8 md:px-6 md:py-12">
+        {!embedded && (
+          <div className="flex justify-end mb-4">
+            <ThemeToggle standalone />
+          </div>
+        )}
         <header className="mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c41e3a] text-white text-sm font-semibold mb-4">
             <span>📅</span>
@@ -83,11 +94,11 @@ export default async function VietnamNewsPage() {
           </div>
           <div className="flex items-baseline gap-3 mb-2">
             <span className="inline-block w-1 h-8 bg-[#c41e3a] rounded-full" />
-            <h1 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] tracking-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] dark:text-white/95 tracking-tight">
               Tin tức Việt Nam
             </h1>
           </div>
-          <p className="text-[#6b6b6b] text-sm md:text-base ml-4">
+          <p className="text-[#6b6b6b] dark:text-slate-400 text-sm md:text-base ml-4">
             Tin nổi bật · {data?.totalResults ?? 0} bài viết
           </p>
         </header>
@@ -96,26 +107,28 @@ export default async function VietnamNewsPage() {
           <NewsList initialArticles={articles} initialNextPage={nextPage} />
         </main>
 
-        <footer className="mt-20 pt-12 pb-6 border-t border-[#e8e6e3]">
+        <footer className="mt-20 pt-12 pb-6 border-t border-[#e8e6e3] dark:border-white/10">
           <div className="flex flex-col items-center gap-4">
             <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/champions-league"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] text-[#1a1a1a] font-medium text-sm no-underline hover:border-[#1a237e]/30 hover:text-[#1a237e] transition-all duration-300"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] text-[#1a1a1a] font-medium text-sm no-underline hover:border-[#1a237e]/30 hover:text-[#1a237e] transition-all duration-300 dark:bg-white/5 dark:border-white/10 dark:text-white/90 dark:hover:border-amber-400/50 dark:hover:text-amber-400"
               >
                 ⚽ C1 Champions League
               </Link>
-              <Link
-                href="https://vanthdev.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] text-[#1a1a1a] font-semibold text-sm no-underline hover:border-[#c41e3a]/30 hover:text-[#c41e3a] hover:shadow-[0_4px_12px_rgba(196,30,58,0.08)] transition-all duration-300"
-              >
-                <span className="text-base">✦</span>
-                vanthdev.com
-              </Link>
+              <span className="vanthdev-btn-wrap inline-block">
+                <Link
+                  href="https://vanthdev.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="vanthdev-btn-inner inline-flex items-center gap-2 px-5 py-2.5 font-semibold text-sm no-underline text-[#1a1a1a] hover:text-[#c41e3a] transition-colors dark:text-white/95 dark:hover:text-amber-400"
+                >
+                  <span className="text-base">✦</span>
+                  vanthdev.com
+                </Link>
+              </span>
             </div>
-            <p className="text-[#999] text-xs tracking-wide">Tin tức được cập nhật liên tục</p>
+            <p className="text-[#999] dark:text-slate-500 text-xs tracking-wide">Tin tức được cập nhật liên tục</p>
           </div>
         </footer>
       </div>

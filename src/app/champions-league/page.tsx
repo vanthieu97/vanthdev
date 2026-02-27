@@ -1,9 +1,15 @@
 'use client';
 
+import { useEffect } from 'react';
 import { ChampionsLeagueContent } from '@/components/champions-league-content';
-import { useLocale } from '@/hooks/useLocale';
+import { useLocaleContext } from '@/contexts/locale-context';
 
 export default function ChampionsLeaguePage() {
-  const locale = useLocale();
-  return <ChampionsLeagueContent locale={locale} useUrlSwitcher />;
+  const { setLocale } = useLocaleContext();
+
+  useEffect(() => {
+    setLocale('vi');
+  }, [setLocale]);
+
+  return <ChampionsLeagueContent locale="vi" useUrlSwitcher />;
 }

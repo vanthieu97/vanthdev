@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { ChampionsLeagueContent } from '@/components/champions-league-content';
-import { useLocaleContext } from '@/contexts/LocaleContext';
+import { useLocaleContext } from '@/contexts/locale-context';
 
 export default function EnChampionsLeaguePage() {
   const { setLocale } = useLocaleContext();

@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useLocaleContext, type Locale } from '@/contexts/LocaleContext';
+import { useLocaleContext, type Locale } from '@/contexts/locale-context';
+import { ThemeToggle } from './theme-toggle';
 
 const LOCALE_LABELS: Record<Locale, string> = {
   vi: 'Tiếng Việt',
@@ -18,9 +19,11 @@ type LanguageSwitcherProps = {
   alternateUrls?: { vi: string; en: string };
   /** Light theme for light backgrounds (e.g. home page) */
   theme?: 'dark' | 'light';
+  /** Show theme toggle in same container (same size as locale buttons) */
+  showThemeToggle?: boolean;
 };
 
-export function LanguageSwitcher({ className = '', variant = 'full', alternateUrls, theme = 'dark' }: LanguageSwitcherProps) {
+export function LanguageSwitcher({ className = '', variant = 'full', alternateUrls, theme = 'dark', showThemeToggle = false }: LanguageSwitcherProps) {
   const { locale, setLocale } = useLocaleContext();
   const pathname = usePathname();
 
@@ -40,8 +43,14 @@ export function LanguageSwitcher({ className = '', variant = 'full', alternateUr
     <div
       className={`${containerClass} ${className}`}
       role="group"
-      aria-label="Switch language"
+      aria-label="Switch language and theme"
     >
+      {showThemeToggle && (
+        <>
+          <ThemeToggle />
+          <span className="w-px h-4 bg-[#e0e0e0] dark:bg-white/20 shrink-0" aria-hidden />
+        </>
+      )}
       {(['vi', 'en'] as const).map((l) => {
         const isActive = activeLocale === l;
         const baseClass = isLight
