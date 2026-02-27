@@ -40,9 +40,41 @@ export default async function VietnamNewsPage() {
 
   const articles = data?.results ?? [];
   const nextPage = data?.nextPage ?? null;
+  const totalResults = data?.totalResults ?? articles.length;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Tin tức Việt Nam - Tin nổi bật',
+    description: 'Tin tức Việt Nam mới nhất, tin nổi bật trong ngày.',
+    numberOfItems: totalResults,
+    itemListElement: articles.slice(0, 10).map((article, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'NewsArticle',
+        headline: article.title,
+        description: article.description ?? undefined,
+        url: article.link,
+        image: article.image_url ?? undefined,
+        datePublished: article.pubDate,
+        author: article.creator?.[0]
+          ? { '@type': 'Person', name: article.creator[0] }
+          : { '@type': 'Organization', name: article.source_name },
+        publisher: {
+          '@type': 'Organization',
+          name: article.source_name,
+        },
+      },
+    })),
+  };
 
   return (
     <div className="min-h-screen bg-[#faf8f5]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-6xl mx-auto px-4 py-8 md:px-6 md:py-12">
         <header className="mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c41e3a] text-white text-sm font-semibold mb-4">
