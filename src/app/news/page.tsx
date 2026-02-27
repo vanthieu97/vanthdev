@@ -1,10 +1,16 @@
 import Link from 'next/link';
+import { headers } from 'next/headers';
 import { fetchVietnamNews } from '@/lib/news';
 import { ThemeToggle } from '@/components/theme-toggle';
 import NewsList from './news-list';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 300;
+
+function getSiteDisplayName(host: string | null): string {
+  const h = host ?? 'localhost';
+  return h.split(':')[0].replace(/^www\./, '') || h;
+}
 
 function getTodayFormatted(): string {
   return new Date().toLocaleDateString('vi-VN', {
@@ -22,6 +28,10 @@ type VietnamNewsPageProps = {
 };
 
 export default async function VietnamNewsPage({ embedded }: VietnamNewsPageProps = {}) {
+  const hdrs = headers();
+  const host = hdrs.get('x-forwarded-host') ?? hdrs.get('host');
+  const siteDisplayName = getSiteDisplayName(host);
+
   let data;
   let error: string | null = null;
 
@@ -118,13 +128,11 @@ export default async function VietnamNewsPage({ embedded }: VietnamNewsPageProps
               </Link>
               <span className="vanthdev-btn-wrap inline-block">
                 <Link
-                  href="https://vanthdev.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/"
                   className="vanthdev-btn-inner inline-flex items-center gap-2 px-5 py-2.5 font-semibold text-sm no-underline text-[#1a1a1a] hover:text-[#c41e3a] transition-colors dark:text-white/95 dark:hover:text-amber-400"
                 >
                   <span className="text-base">✦</span>
-                  vanthdev.com
+                  {siteDisplayName}
                 </Link>
               </span>
             </div>
