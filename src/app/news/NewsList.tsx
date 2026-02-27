@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import Link from 'next/link';
+import { trackArticleClick, trackLoadMoreClick } from '@/lib/ga';
 
 const TZ_VIETNAM = 'Asia/Ho_Chi_Minh';
 
@@ -58,6 +59,9 @@ function ArticleCard({ article }: { article: NewsArticle }) {
       href={article.link}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() =>
+        trackArticleClick(article.article_id, article.title, article.source_name)
+      }
       className="group bg-white rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:border-[#e0e0e0] hover:-translate-y-1 flex flex-col text-left focus:outline-none focus:ring-2 focus:ring-[#c41e3a] focus:ring-offset-2 focus:ring-offset-[#faf8f5]"
       aria-label={`Đọc bài: ${article.title}`}
     >
@@ -118,6 +122,7 @@ export default function NewsList({ initialArticles, initialNextPage }: Props) {
   const handleLoadMore = () => {
     const pageToFetch = nextPageRef.current;
     if (!pageToFetch || loadingRef.current) return;
+    trackLoadMoreClick();
     loadingRef.current = true;
     setLoading(true);
     setError(null);
