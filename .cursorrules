@@ -1,0 +1,70 @@
+# Frontend Engineering Standards
+
+Work as a senior Frontend engineer. Follow the conventions below.
+
+## Stack & Structure
+
+- **Framework**: Next.js 14 (App Router), React 18
+- **Styling**: Tailwind CSS v4
+- **Structure**: `src/app/` (routes), `src/lib/` (utils, fetch), components colocated in feature folders
+
+## Server vs Client Components
+
+- **Server first**: Default to Server Components. Use `'use client'` only when needed: state, event handlers, hooks, browser APIs.
+- **Data fetching**: Fetch on server (page.tsx, layout.tsx). Pass data to Client Components via props.
+- **API routes**: Use `/api/*` when client needs to fetch (pagination, mutations). Server fetches directly from lib.
+
+```tsx
+// ✅ Server page fetches, passes to client
+const data = await fetchFromLib();
+return <ClientList initialData={data} />;
+
+// ✅ Client loads more via API route
+fetch(`/api/news?page=${nextPage}`)
+```
+
+## Styling & Design System
+
+- **Colors**: `#faf8f5` (background), `#c41e3a` (accent/red), `#1a1a1a` (text), `#6b6b6b` / `#8a8a8a` (muted)
+- **Layout**: `max-w-6xl mx-auto px-4 py-8 md:px-6 md:py-12`
+- **Cards**: `rounded-2xl`, `shadow-[0_1px_3px_rgba(0,0,0,0.06)]`, hover: `shadow-[0_12px_40px...]`, `-translate-y-1`
+- **Focus**: `focus:ring-2 focus:ring-[#c41e3a] focus:ring-offset-2`
+- Use Tailwind arbitrary values when needed. Responsive: `md:`, `sm:`.
+
+## SEO
+
+- **Metadata**: Every page has `title`, `description`, `keywords`. Layout exports `metadata`.
+- **Open Graph & Twitter**: Add `openGraph`, `twitter` in metadata. Use `metadataBase` for absolute URLs.
+- **Structured data**: JSON-LD (ItemList, NewsArticle, …) for structured content.
+- **Sitemap**: Update `src/app/sitemap.ts`. Set `changeFrequency` and `priority` appropriately per route.
+- **Canonical**: `alternates.canonical` when there is duplicate content.
+
+## Vietnamese Locale
+
+- UI text: Vietnamese.
+- **Timezone**: `Asia/Ho_Chi_Minh` when formatting dates.
+- **Date locale**: `toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', ... })`.
+- Metadata: `locale: 'vi_VN'` in Open Graph.
+
+## Error & Loading
+
+- **Error boundary**: Catch on server, render clear fallback UI (no crashes).
+- **Loading**: Client has `loading` state, `loadingRef` to prevent double-fetch. Show "Đang tải..." when loading.
+- **Error message**: Display errors to user (not just `console.error`).
+
+## Accessibility
+
+- `aria-label` for links/buttons when text is insufficient.
+- `rel="noopener noreferrer"` for `target="_blank"`.
+- Clear focus states on interactive elements.
+
+## Code Style
+
+- **Types**: Define type/interface for props, API responses. Use `*.d.ts` in feature folders.
+- **Imports**: `@/` alias for `src/`. Prefer absolute paths.
+- **Env**: Use `process.env.NEXT_PUBLIC_*` (client), `process.env.*` (server). Add `.env.example` when needed.
+
+## Git Commits
+
+- Format: `feat:`, `fix:`, `refactor:`, `chore:`
+- Messages concise, describe changes clearly. Use bullet points for multiple changes.
