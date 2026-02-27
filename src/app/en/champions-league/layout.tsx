@@ -3,44 +3,43 @@ import type { Metadata } from 'next';
 export const dynamic = 'force-static';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
-const pageUrl = `${baseUrl}/champions-league`;
-const enUrl = `${baseUrl}/en/champions-league`;
+const pageUrl = `${baseUrl}/en/champions-league`;
+const viUrl = `${baseUrl}/champions-league`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: 'Kết quả bốc thăm vòng 1/8 Cúp C1 châu Âu 2025/2026',
+  title: 'UEFA Champions League 2025/26 Round of 16 Draw Results',
   description:
-    'Kết quả bốc thăm vòng 1/8 UEFA Champions League 2025/2026. Xem các cặp đấu: PSG vs Chelsea, Real Madrid vs Man City, Barcelona vs Newcastle. Chung kết 30.05.2026 tại Puskás Aréna, Budapest.',
+    'UEFA Champions League 2025/26 Round of 16 draw results. Fixtures: PSG vs Chelsea, Real Madrid vs Man City, Barcelona vs Newcastle. Final 30 May 2026 at Puskás Aréna, Budapest.',
   keywords: [
-    'Cúp C1',
     'Champions League',
     'UEFA',
-    'bốc thăm vòng 1/8',
+    'Round of 16 draw',
     '2025 2026',
     'Budapest',
     'PSG Chelsea',
     'Real Madrid Man City',
   ],
   openGraph: {
-    title: 'Kết quả bốc thăm vòng 1/8 Cúp C1 châu Âu 2025/2026',
-    description: 'Kết quả bốc thăm vòng 1/8 UEFA Champions League 2025/2026. Chung kết tại Puskás Aréna, Budapest.',
+    title: 'UEFA Champions League 2025/26 Round of 16 Draw Results',
+    description: 'UEFA Champions League 2025/26 Round of 16 draw results. Final at Puskás Aréna, Budapest.',
     url: pageUrl,
     siteName: 'Champions League 2025/26',
     type: 'website',
-    locale: 'vi_VN',
-    alternateLocale: 'en_US',
+    locale: 'en_US',
+    alternateLocale: 'vi_VN',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kết quả bốc thăm vòng 1/8 Cúp C1 2025/2026',
-    description: 'UEFA Champions League Round of 16 draw - PSG vs Chelsea, Real Madrid vs Man City, và các cặp đấu khác.',
+    title: 'UEFA Champions League 2025/26 Round of 16 Draw',
+    description: 'Round of 16 draw - PSG vs Chelsea, Real Madrid vs Man City, and more fixtures.',
   },
   alternates: {
     canonical: pageUrl,
     languages: {
-      'vi-VN': pageUrl,
-      'en-US': enUrl,
-      'x-default': pageUrl,
+      'vi-VN': viUrl,
+      'en-US': pageUrl,
+      'x-default': viUrl,
     },
   },
   robots: {
@@ -56,7 +55,7 @@ const jsonLd = {
     {
       '@type': 'SportsEvent',
       name: 'UEFA Champions League 2025/26 Round of 16',
-      description: 'Kết quả bốc thăm vòng 1/8 UEFA Champions League 2025/2026',
+      description: 'UEFA Champions League 2025/26 Round of 16 draw results',
       startDate: '2026-03-10',
       endDate: '2026-05-30',
       location: {
@@ -72,18 +71,18 @@ const jsonLd = {
       mainEntity: [
         {
           '@type': 'Question',
-          name: 'Chung kết C1 2026 diễn ra khi nào?',
+          name: 'When is the 2026 Champions League final?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Chung kết UEFA Champions League 2025/26 diễn ra ngày 30.05.2026 tại Puskás Aréna, Budapest, Hungary.',
+            text: 'The 2025/26 UEFA Champions League final takes place on 30 May 2026 at Puskás Aréna, Budapest, Hungary.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Thể thức vòng 1/8 như thế nào?',
+          name: 'How does the Round of 16 format work?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Mỗi cặp đấu đá hai lượt (đi – về). Đội ghi nhiều bàn thắng hơn sau hai lượt đi tiếp. Các đội đá lượt về trên sân nhà.',
+            text: 'Each tie is played over two legs (home and away). The team with more goals on aggregate advances. Teams play the second leg at home.',
           },
         },
       ],
@@ -91,7 +90,7 @@ const jsonLd = {
   ],
 };
 
-export default function ChampionsLeagueLayout({ children }: { children: React.ReactNode }) {
+export default function EnChampionsLeagueLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <script

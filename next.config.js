@@ -17,6 +17,7 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/c1', destination: '/champions-league', permanent: true },
+      { source: '/en/c1', destination: '/en/champions-league', permanent: true },
     ];
   },
 };

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -15,16 +14,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
-  const cookieStore = await cookies();
-  const localeCookie = cookieStore.get('locale')?.value;
-  const initialLocale = localeCookie === 'vi' || localeCookie === 'en' ? localeCookie : null;
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <LocaleProvider initialLocale={initialLocale}>
+        <LocaleProvider>
           {children}
           {gaId && <GoogleAnalytics gaId={gaId} />}
           <Analytics />

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './solar-system.css';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Hệ Mặt Trời – Mô phỏng Mặt Trời và 8 hành tinh quay quanh',
   description:

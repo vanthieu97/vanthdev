@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Lunar New Year Countdown 2026 – Chinese New Year & Tet Countdown Timer',
   description:
