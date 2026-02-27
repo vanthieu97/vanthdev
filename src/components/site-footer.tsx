@@ -1,15 +1,13 @@
 import Link from 'next/link';
-import { headers } from 'next/headers';
 
-function getSiteDisplayName(host: string | null): string {
-  const h = host ?? 'localhost';
-  return h.split(':')[0].replace(/^www\./, '') || h;
+function getSiteDisplayName(): string {
+  const url = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
+  const hostname = new URL(url).hostname;
+  return hostname.replace(/^www\./, '') || hostname;
 }
 
-export async function SiteFooter() {
-  const hdrs = headers();
-  const host = hdrs.get('x-forwarded-host') ?? hdrs.get('host');
-  const siteDisplayName = getSiteDisplayName(host);
+export function SiteFooter() {
+  const siteDisplayName = getSiteDisplayName();
 
   return (
     <footer className="relative z-20 border-t border-[#e8e6e3] dark:border-white/10 bg-[#faf8f5] dark:bg-[#0a0f1a]">
