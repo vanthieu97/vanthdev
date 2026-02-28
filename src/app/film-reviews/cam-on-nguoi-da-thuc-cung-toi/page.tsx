@@ -10,6 +10,8 @@ const POSTER_URL = 'https://img.youtube.com/vi/uf2oOeJ-Z3s/hqdefault.jpg';
 
 const YOUTUBE_REVIEWS: { youtubeId: string; title: string; channel?: string }[] = [];
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Review phim Cảm ơn người đã thức cùng tôi - Khúc ca điện ảnh ấm áp tình thân',
   description:

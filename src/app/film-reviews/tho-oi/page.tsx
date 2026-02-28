@@ -12,6 +12,8 @@ const YOUTUBE_REVIEWS: { youtubeId: string; title: string; channel?: string }[] 
   // Thêm video review từ YouTube - tìm "review Thỏ ơi Trấn Thành"
 ];
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Review phim Thỏ ơi - Góc khuất tình yêu qua lăng kính Trấn Thành',
   description:

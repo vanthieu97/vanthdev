@@ -40,6 +40,8 @@ const REVIEWS = [
   },
 ] as const;
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Review phim - Đánh giá phim điện ảnh Việt Nam Tết 2026',
   description:
@@ -156,12 +158,12 @@ export default function FilmReviewsPage() {
                     dark:hover:border-[#5a5a6a] dark:hover:bg-[#333344]/95
                     transition-all duration-300 text-center focus:outline-none focus:ring-2 focus:ring-[#c41e3a] focus:ring-offset-2 focus:ring-offset-[#faf8f5] dark:focus:ring-offset-[#0a0f1a]"
                 >
-                  <div className="relative w-24 sm:w-28 h-36 sm:h-40 shrink-0 rounded-xl overflow-hidden bg-[#eee] dark:bg-[#333]">
+                  <div className="relative w-full sm:w-28 h-44 sm:h-40 shrink-0 rounded-xl overflow-hidden bg-[#eee] dark:bg-[#333]">
                     <FilmPoster
                       youtubeId={youtubeId}
                       alt={`Poster ${title}`}
                       className="object-cover"
-                      sizes="(max-width: 640px) 96px, 112px"
+                      sizes="(max-width: 640px) 400px, 112px"
                     />
                   </div>
                   <div className="min-w-0 flex-1 text-left">

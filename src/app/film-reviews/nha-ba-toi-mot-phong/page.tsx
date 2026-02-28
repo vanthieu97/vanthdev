@@ -12,6 +12,8 @@ const YOUTUBE_REVIEWS: { youtubeId: string; title: string; channel?: string }[] 
   // Thêm video review từ YouTube - tìm "review Nhà ba tôi một phòng"
 ];
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Review phim Nhà ba tôi một phòng - Tình cha con bình dị của Trường Giang',
   description:

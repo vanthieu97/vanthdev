@@ -36,8 +36,8 @@ fetch(`/api/news?page=${nextPage}`)
 ## SEO
 
 - **Metadata**: Every page has `title`, `description`, `keywords`. Layout exports `metadata`.
-- **Title**: Put primary keyword first (e.g. "Cúp C1 2025/2026 - ..."). Match user search intent.
-- **Keywords**: Include variations (Cúp C1, Cup C1, lịch thi đấu C1, kết quả C1) for Vietnamese sports.
+- **Title**: Put primary keyword first (e.g. "Review phim - ..."). Match user search intent.
+- **Keywords**: Include variations for target keywords.
 - **On-page**: H1 and first paragraph should include target keywords. Use `sr-only` for extra SEO text if needed.
 - **Open Graph & Twitter**: Add `openGraph`, `twitter` in metadata. Use `opengraph-image.tsx` for dynamic OG images.
 - **Structured data**: JSON-LD (SportsEvent, FAQPage, BreadcrumbList). Add `alternateName` for synonyms.
@@ -54,7 +54,7 @@ fetch(`/api/news?page=${nextPage}`)
 ## Error & Loading
 
 - **Error boundary**: Catch on server, render clear fallback UI (no crashes).
-- **Loading**: Client has `loading` state, `loadingRef` to prevent double-fetch. Show "Đang tải..." when loading.
+- **Loading**: Client has `loading` state, `loadingRef` to prevent double-fetch. Show loading text (e.g. "Đang tải..." for Vietnamese UI).
 - **Error message**: Display errors to user (not just `console.error`).
 
 ## Accessibility
@@ -82,4 +82,4 @@ fetch(`/api/news?page=${nextPage}`)
 
 ## Build
 
-- **Không chạy build** (`npm run build`) trừ khi user yêu cầu rõ ràng. Chỉ sửa code, không verify bằng build.
+- **Do not run build** (`npm run build`) unless user explicitly requests it. Only fix code, do not verify by build.

@@ -11,6 +11,8 @@ const POSTER_URL =
 
 const YOUTUBE_REVIEWS: { youtubeId: string; title: string; channel?: string }[] = [];
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Review phim Mùi phở - Hơi ấm gia đình trong tô phở đầu năm',
   description:

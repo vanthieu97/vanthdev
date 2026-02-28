@@ -28,7 +28,7 @@ export function SiteHeader({ alternateUrls }: SiteHeaderProps = {}) {
         <span className="vanthdev-btn-wrap inline-block shrink-0">
           <Link
             href="/"
-            className="vanthdev-btn-inner inline-flex cursor-pointer items-center gap-2 px-4 py-2 font-semibold text-sm no-underline text-[#1a1a1a] hover:text-[#c41e3a] transition-colors dark:text-white/95 dark:hover:text-amber-400"
+            className="vanthdev-btn-inner inline-flex cursor-pointer items-center gap-1.5 px-3 py-1.5 font-semibold text-sm no-underline text-[#1a1a1a] hover:text-[#c41e3a] transition-colors dark:text-white/95 dark:hover:text-amber-400"
           >
             <img src="/vanthdev-logo.svg" alt="" width={28} height={28} className="shrink-0" />
             {siteDisplayName}
