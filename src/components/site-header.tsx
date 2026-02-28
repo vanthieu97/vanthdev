@@ -30,7 +30,13 @@ export function SiteHeader({ alternateUrls }: SiteHeaderProps = {}) {
             href="/"
             className="vanthdev-btn-inner inline-flex cursor-pointer items-center gap-2 px-4 py-2 font-semibold text-sm no-underline text-[#1a1a1a] hover:text-[#c41e3a] transition-colors dark:text-white/95 dark:hover:text-amber-400"
           >
-            <span className="text-base">✦</span>
+            <img
+              src="/vanthdev-logo.svg"
+              alt=""
+              width={28}
+              height={28}
+              className="shrink-0"
+            />
             {siteDisplayName}
           </Link>
         </span>

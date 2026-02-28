@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { PwaPushManager } from '@/components/pwa-push-manager';
 
@@ -11,6 +12,15 @@ function getSiteDisplayName(): string {
 
 export function SiteFooter() {
   const siteDisplayName = getSiteDisplayName();
+  const [isPwa, setIsPwa] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const standalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
+    setIsPwa(standalone);
+  }, []);
 
   return (
     <footer className="relative z-20 border-t border-[#e8e6e3] dark:border-white/10 bg-[#faf8f5] dark:bg-[#0a0f1a]">
@@ -34,14 +44,16 @@ export function SiteFooter() {
             </span>
           </div>
           <p className="text-[#999] dark:text-slate-500 text-xs tracking-wide">Tin tức được cập nhật liên tục</p>
-          <details className="group mt-4 w-full max-w-sm rounded-xl border border-[#e8e6e3] bg-white/50 p-4 dark:border-white/10 dark:bg-white/5">
-            <summary className="cursor-pointer list-none text-sm font-medium text-[#1a1a1a] dark:text-white/90">
-              🔔 Thông báo đẩy
-            </summary>
-            <div className="mt-3">
-              <PwaPushManager />
-            </div>
-          </details>
+          {isPwa && (
+            <details className="group mt-4 w-full max-w-sm rounded-xl border border-[#e8e6e3] bg-white/50 p-4 dark:border-white/10 dark:bg-white/5">
+              <summary className="cursor-pointer list-none text-sm font-medium text-[#1a1a1a] dark:text-white/90">
+                🔔 Thông báo đẩy
+              </summary>
+              <div className="mt-3">
+                <PwaPushManager />
+              </div>
+            </details>
+          )}
         </div>
       </div>
     </footer>

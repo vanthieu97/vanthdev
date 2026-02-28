@@ -1,7 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocale } from '@/hooks/use-locale';
+
+const STORAGE_KEY = 'pwa-install-prompt-last-seen';
+const COOLDOWN_MS = 24 * 60 * 60 * 1000; // 24 hours
+const AUTO_HIDE_MS = 5000; // 5 seconds
 
 const LABELS = {
   vi: {
@@ -22,15 +26,45 @@ const LABELS = {
   },
 };
 
+function shouldShowByCooldown(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const last = localStorage.getItem(STORAGE_KEY);
+    if (!last) return true;
+    const lastMs = parseInt(last, 10);
+    if (Number.isNaN(lastMs)) return true;
+    return Date.now() - lastMs >= COOLDOWN_MS;
+  } catch {
+    return true;
+  }
+}
+
+function markShown(): void {
+  try {
+    localStorage.setItem(STORAGE_KEY, String(Date.now()));
+  } catch {
+    /* ignore */
+  }
+}
+
 export function PwaInstallPrompt() {
   const locale = useLocale();
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const labels = LABELS[locale] ?? LABELS.en;
+
+  const hide = useCallback(() => {
+    markShown();
+    setIsVisible(false);
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -46,7 +80,6 @@ export function PwaInstallPrompt() {
     const handler = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      setDismissed(false);
     };
 
     window.addEventListener('beforeinstallprompt', handler);
@@ -54,14 +87,25 @@ export function PwaInstallPrompt() {
   }, []);
 
   useEffect(() => {
-    if (isStandalone || dismissed) {
+    if (isStandalone) {
       setIsVisible(false);
       return;
     }
-    if (isIOS || deferredPrompt) {
-      setIsVisible(true);
+    if (!isIOS && !deferredPrompt) return;
+
+    if (!shouldShowByCooldown()) {
+      setIsVisible(false);
+      return;
     }
-  }, [isStandalone, dismissed, isIOS, deferredPrompt]);
+
+    setIsVisible(true);
+    timerRef.current = setTimeout(hide, AUTO_HIDE_MS);
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, [isStandalone, isIOS, deferredPrompt, hide]);
 
   const handleInstall = async () => {
     if (deferredPrompt) {
@@ -69,14 +113,13 @@ export function PwaInstallPrompt() {
       const { outcome } = await deferredPrompt.userChoice;
       if (outcome === 'accepted') {
         setDeferredPrompt(null);
-        setIsVisible(false);
+        hide();
       }
     }
   };
 
   const handleDismiss = () => {
-    setDismissed(true);
-    setIsVisible(false);
+    hide();
   };
 
   if (!isVisible) return null;
