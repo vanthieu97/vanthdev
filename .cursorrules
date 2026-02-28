@@ -25,6 +25,8 @@ fetch(`/api/news?page=${nextPage}`)
 
 ## Styling & Design System
 
+- **Tailwind first**: Prefer Tailwind utility classes over custom CSS. Avoid adding new rules to globals.css or feature CSS files. Use `className` with Tailwind for layout, colors, gradients, animations, hover states.
+- **Tailwind v4**: Use `bg-linear-to-*` for gradients (not `bg-gradient-to-*`). Use built-in `animate-*` (animate-pulse, animate-bounce) instead of custom @keyframes when possible.
 - **Colors**: `#faf8f5` (background), `#c41e3a` (accent/red), `#1a1a1a` (text), `#6b6b6b` / `#8a8a8a` (muted)
 - **Layout**: `max-w-6xl mx-auto px-4 py-8 md:px-6 md:py-12`
 - **Cards**: `rounded-2xl`, `shadow-[0_1px_3px_rgba(0,0,0,0.06)]`, hover: `shadow-[0_12px_40px...]`, `-translate-y-1`
@@ -34,10 +36,13 @@ fetch(`/api/news?page=${nextPage}`)
 ## SEO
 
 - **Metadata**: Every page has `title`, `description`, `keywords`. Layout exports `metadata`.
-- **Open Graph & Twitter**: Add `openGraph`, `twitter` in metadata. Use `metadataBase` for absolute URLs.
-- **Structured data**: JSON-LD (ItemList, NewsArticle, …) for structured content.
-- **Sitemap**: Update `src/app/sitemap.ts`. Set `changeFrequency` and `priority` appropriately per route.
-- **Canonical**: `alternates.canonical` when there is duplicate content.
+- **Title**: Put primary keyword first (e.g. "Cúp C1 2025/2026 - ..."). Match user search intent.
+- **Keywords**: Include variations (Cúp C1, Cup C1, lịch thi đấu C1, kết quả C1) for Vietnamese sports.
+- **On-page**: H1 and first paragraph should include target keywords. Use `sr-only` for extra SEO text if needed.
+- **Open Graph & Twitter**: Add `openGraph`, `twitter` in metadata. Use `opengraph-image.tsx` for dynamic OG images.
+- **Structured data**: JSON-LD (SportsEvent, FAQPage, BreadcrumbList). Add `alternateName` for synonyms.
+- **Sitemap**: Update `src/app/sitemap.ts`. Key pages: `priority` 0.9–1. `changeFrequency`: daily/weekly.
+- **Canonical**: `alternates.canonical` and `languages` for hreflang.
 
 ## Vietnamese Locale
 

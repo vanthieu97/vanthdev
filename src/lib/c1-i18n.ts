@@ -9,7 +9,7 @@ export const C1_TRANSLATIONS = {
   vi: {
     roadTo: 'Đường đến',
     budapest26: 'Budapest 26',
-    subtitle: 'UEFA Champions League • Vòng 1/8',
+    subtitle: 'Cúp C1 Champions League • Vòng 1/8',
     bracketLeft: 'Bracket trái',
     bracketRight: 'Bracket phải',
     teamsPlay2ndLegAtHome: 'Các đội đá lượt về trên sân nhà',
@@ -36,7 +36,7 @@ export const C1_TRANSLATIONS = {
     finalVenue: 'Puskás Aréna, Budapest',
     source: 'Nguồn',
     uefa: 'UEFA.com',
-    intro: 'Kết quả bốc thăm vòng 1/8 UEFA Champions League 2025/2026. 8 cặp đấu loại trực tiếp hai lượt, đội thắng đi tiếp vào tứ kết.',
+    intro: 'Kết quả bốc thăm vòng 1/8 Cúp C1 Champions League 2025/2026. 8 cặp đấu loại trực tiếp hai lượt, đội thắng đi tiếp vào tứ kết.',
     faqTitle: 'Câu hỏi thường gặp',
     faq1Q: 'Chung kết C1 2026 diễn ra khi nào?',
     faq1A: 'Chung kết UEFA Champions League 2025/26 diễn ra ngày 30.05.2026 tại Puskás Aréna, Budapest, Hungary.',
