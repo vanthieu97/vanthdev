@@ -23,8 +23,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Hệ Mặt Trời – Mô phỏng các hành tinh',
-    description:
-      'Mô phỏng Mặt Trời và 8 hành tinh, quỹ đạo quay quanh. Xem trực tuyến.',
+    description: 'Mô phỏng Mặt Trời và 8 hành tinh, quỹ đạo quay quanh. Xem trực tuyến.',
     type: 'website',
     locale: 'vi_VN',
   },
@@ -36,10 +35,6 @@ export const metadata: Metadata = {
   alternates: { canonical: '/solar-system' },
 };
 
-export default function SolarSystemLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function SolarSystemLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

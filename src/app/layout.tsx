@@ -8,6 +8,7 @@ import { ThemeInitScript } from '@/components/theme-init-script';
 import { ScrollToTop } from '@/components/scroll-to-top';
 import { ConditionalSiteFooter } from '@/components/conditional-site-footer';
 import { ConditionalSiteHeader } from '@/components/conditional-site-header';
+import { PwaInstallPrompt } from '@/components/pwa-install-prompt';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ConditionalSiteFooter />
             {gaId && <GoogleAnalytics gaId={gaId} />}
             <ScrollToTop />
+            <PwaInstallPrompt />
             <Analytics />
             <SpeedInsights />
           </LocaleProvider>
