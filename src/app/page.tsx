@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import VietnamNewsPage from '@/app/news/page';
+import { VietnamNewsContent } from '@/app/news/vietnam-news-content';
 import { HomeEntryPoints } from '@/components/home-entry-points';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
@@ -51,7 +51,7 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-4 pt-8 pb-0 md:px-6 md:pt-12">
         <HomeEntryPoints />
       </div>
-      <VietnamNewsPage embedded />
+      <VietnamNewsContent embedded />
     </div>
   );
 }

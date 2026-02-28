@@ -186,7 +186,7 @@ export function getScheduleGroupedByDate(): { date: string; entries: ScheduleEnt
     list.push(e);
     map.set(e.date, list);
   }
-  const sortedDates = [...map.keys()].sort(
+  const sortedDates = Array.from(map.keys()).sort(
     (a, b) => toSortKey(a).localeCompare(toSortKey(b))
   );
   return sortedDates.map((date) => ({ date, entries: map.get(date)! }));
@@ -480,7 +480,7 @@ export function getResultsGroupedByDate(results: MatchResult[]): { date: string;
       map.set(key, { entries: [r], year: r.year ?? '2026' });
     }
   }
-  return [...map.entries()]
+  return Array.from(map.entries())
     .sort(([, a], [, b]) => toSortKey(b.entries[0].date, b.year).localeCompare(toSortKey(a.entries[0].date, a.year)))
     .map(([key, { entries, year }]) => {
       const date = key.split('-')[0];
@@ -498,7 +498,7 @@ export function groupEmptySlotsByDate(
     list.push(s);
     map.set(s.date, list);
   }
-  return [...map.keys()]
+  return Array.from(map.keys())
     .sort((a, b) => toSortKey(a).localeCompare(toSortKey(b)))
     .map((date) => ({ date, slots: map.get(date)! }));
 }
