@@ -39,20 +39,17 @@ body {
 
 /* Animated gradient border for vanthdev button */
 @keyframes gradient-border-flow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .vanthdev-btn-wrap {
-  background: linear-gradient(
-    90deg,
-    #c41e3a,
-    #d4af37,
-    #fbbf24,
-    #f4e4bc,
-    #e63946,
-    #c41e3a
-  );
+  background: linear-gradient(90deg, #c41e3a, #d4af37, #fbbf24, #f4e4bc, #e63946, #c41e3a);
   background-size: 200% 100%;
   animation: gradient-border-flow 4s ease-in-out infinite;
   padding: 2px;
@@ -62,7 +59,9 @@ body {
 .vanthdev-btn-wrap .vanthdev-btn-inner {
   background: #fff;
   border-radius: 9999px;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
 }
 
 .dark .vanthdev-btn-wrap .vanthdev-btn-inner {

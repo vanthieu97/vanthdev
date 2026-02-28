@@ -55,13 +55,7 @@
   margin-top: -5vmin;
   margin-left: -5vmin;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #fff8e0,
-    #ffd54f 40%,
-    #ff9800 70%,
-    #e65100 100%
-  );
+  background: radial-gradient(circle at 30% 30%, #fff8e0, #ffd54f 40%, #ff9800 70%, #e65100 100%);
   box-shadow:
     0 0 5vmin rgba(255, 200, 80, 0.9),
     0 0 10vmin rgba(255, 150, 50, 0.5),
@@ -180,102 +174,54 @@
   height: 7%;
   min-width: 5px;
   min-height: 5px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #e0e0e0,
-    #b0b0b0 45%,
-    #808080 85%,
-    #5a5a5a 100%
-  );
+  background: radial-gradient(circle at 30% 30%, #e0e0e0, #b0b0b0 45%, #808080 85%, #5a5a5a 100%);
 }
 .solar-system-planet[data-planet='venus'] {
   width: 6.5%;
   height: 6.5%;
   min-width: 5px;
   min-height: 5px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #fff4c4,
-    #e6c229 45%,
-    #c9a61d 85%,
-    #9a7b0f 100%
-  );
+  background: radial-gradient(circle at 30% 30%, #fff4c4, #e6c229 45%, #c9a61d 85%, #9a7b0f 100%);
 }
 .solar-system-planet[data-planet='earth'] {
   width: 6.5%;
   height: 6.5%;
   min-width: 5px;
   min-height: 5px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #7eb8e8,
-    #4a90d9 45%,
-    #2d6cb0 85%,
-    #1a4a7a 100%
-  );
+  background: radial-gradient(circle at 30% 30%, #7eb8e8, #4a90d9 45%, #2d6cb0 85%, #1a4a7a 100%);
 }
 .solar-system-planet[data-planet='mars'] {
   width: 6%;
   height: 6%;
   min-width: 5px;
   min-height: 5px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #e05a2b,
-    #c1440e 45%,
-    #8b3008 85%,
-    #5a2005 100%
-  );
+  background: radial-gradient(circle at 30% 30%, #e05a2b, #c1440e 45%, #8b3008 85%, #5a2005 100%);
 }
 .solar-system-planet[data-planet='jupiter'] {
   width: 12%;
   height: 12%;
   min-width: 10px;
   min-height: 10px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #e0b060,
-    #c88b3a 40%,
-    #a66b2a 75%,
-    #6b4520 100%
-  );
+  background: radial-gradient(circle at 30% 30%, #e0b060, #c88b3a 40%, #a66b2a 75%, #6b4520 100%);
 }
 .solar-system-planet[data-planet='saturn'] {
   width: 10%;
   height: 10%;
   min-width: 8px;
   min-height: 8px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #f0e6c8,
-    #e4d4a5 40%,
-    #c9b896 75%,
-    #a09070 100%
-  );
+  background: radial-gradient(circle at 30% 30%, #f0e6c8, #e4d4a5 40%, #c9b896 75%, #a09070 100%);
 }
 .solar-system-planet[data-planet='uranus'] {
   width: 6%;
   height: 6%;
   min-width: 5px;
   min-height: 5px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #8ed4f5,
-    #5eb9e8 45%,
-    #3a9bc9 85%,
-    #256b8f 100%
-  );
+  background: radial-gradient(circle at 30% 30%, #8ed4f5, #5eb9e8 45%, #3a9bc9 85%, #256b8f 100%);
 }
 .solar-system-planet[data-planet='neptune'] {
   width: 6%;
   height: 6%;
   min-width: 5px;
   min-height: 5px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #4a7ee8,
-    #2e5fd4 45%,
-    #1e4099 85%,
-    #122860 100%
-  );
+  background: radial-gradient(circle at 30% 30%, #4a7ee8, #2e5fd4 45%, #1e4099 85%, #122860 100%);
 }

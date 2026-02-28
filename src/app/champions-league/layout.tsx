@@ -27,7 +27,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Cúp C1 2025/2026 - Lịch thi đấu & Kết quả vòng 1/8 Champions League',
-    description: 'Cúp C1 Champions League: Lịch đấu, kết quả vòng 1/8. PSG vs Chelsea, Real vs Man City. Chung kết 30.05.2026 Budapest.',
+    description:
+      'Cúp C1 Champions League: Lịch đấu, kết quả vòng 1/8. PSG vs Chelsea, Real vs Man City. Chung kết 30.05.2026 Budapest.',
     url: pageUrl,
     siteName: 'vanthdev.com',
     type: 'website',
@@ -38,7 +39,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Cúp C1 2025/2026 - Lịch thi đấu & Kết quả vòng 1/8',
-    description: 'Cúp C1 Champions League: PSG vs Chelsea, Real vs Man City, Barcelona vs Newcastle. Chung kết Budapest 30.05.2026.',
+    description:
+      'Cúp C1 Champions League: PSG vs Chelsea, Real vs Man City, Barcelona vs Newcastle. Chung kết Budapest 30.05.2026.',
   },
   alternates: {
     canonical: pageUrl,
@@ -69,7 +71,8 @@ const jsonLd = {
       '@type': 'SportsEvent',
       name: 'Cúp C1 Champions League 2025/26 - Vòng 1/8',
       alternateName: 'UEFA Champions League 2025/26 Round of 16',
-      description: 'Kết quả bốc thăm vòng 1/8 Cúp C1 Champions League 2025/2026. Lịch thi đấu, kết quả các cặp đấu PSG vs Chelsea, Real Madrid vs Man City.',
+      description:
+        'Kết quả bốc thăm vòng 1/8 Cúp C1 Champions League 2025/2026. Lịch thi đấu, kết quả các cặp đấu PSG vs Chelsea, Real Madrid vs Man City.',
       startDate: '2026-03-10',
       endDate: '2026-05-30',
       location: {

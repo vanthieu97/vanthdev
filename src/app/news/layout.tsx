@@ -14,7 +14,8 @@ export const metadata: Metadata = {
   keywords: ['tin tức Việt Nam', 'tin nổi bật', 'tin trong ngày', 'thời sự', 'news Vietnam'],
   openGraph: {
     title: 'Tin tức Việt Nam - Tin nổi bật cập nhật liên tục',
-    description: 'Tin tức Việt Nam mới nhất, tin nổi bật trong ngày. Cập nhật liên tục từ các nguồn uy tín.',
+    description:
+      'Tin tức Việt Nam mới nhất, tin nổi bật trong ngày. Cập nhật liên tục từ các nguồn uy tín.',
     url: newsUrl,
     siteName: 'Tin tức Việt Nam',
     type: 'website',

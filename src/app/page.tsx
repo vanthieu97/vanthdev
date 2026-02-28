@@ -11,7 +11,8 @@ export const metadata: Metadata = {
   keywords: ['tin tức Việt Nam', 'tin nổi bật', 'tin trong ngày', 'thời sự', 'news Vietnam'],
   openGraph: {
     title: 'Tin tức Việt Nam - Tin nổi bật cập nhật liên tục',
-    description: 'Tin tức Việt Nam mới nhất, tin nổi bật trong ngày. Cập nhật liên tục từ các nguồn uy tín.',
+    description:
+      'Tin tức Việt Nam mới nhất, tin nổi bật trong ngày. Cập nhật liên tục từ các nguồn uy tín.',
     url: baseUrl,
     siteName: 'vanthdev.com',
     type: 'website',
@@ -43,7 +44,7 @@ const homeJsonLd = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#0a0f1a]">
+    <div className="bg-[#faf8f5] dark:bg-[#0a0f1a]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}

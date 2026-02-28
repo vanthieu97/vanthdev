@@ -24,7 +24,9 @@ export async function VietnamNewsContent(props: { embedded?: boolean }) {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#faf8f5] dark:bg-[#0a0f1a] p-6 md:p-8">
+      <div
+        className={`bg-[#faf8f5] dark:bg-[#0a0f1a] p-6 md:p-8 ${embedded ? '' : 'min-h-screen'}`}
+      >
         <header className="text-center mb-12">
           <h1 className="text-3xl font-bold text-[#1a1a1a] dark:text-white/95 tracking-tight">
             Tin tức Việt Nam
@@ -69,7 +71,7 @@ export async function VietnamNewsContent(props: { embedded?: boolean }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#0a0f1a]">
+    <div className={`bg-[#faf8f5] dark:bg-[#0a0f1a] ${embedded ? '' : 'min-h-screen'}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -25,7 +25,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'UEFA Champions League 2025/26 Round of 16 Draw Results',
-    description: 'UEFA Champions League 2025/26 Round of 16 draw results. Final at Puskás Aréna, Budapest.',
+    description:
+      'UEFA Champions League 2025/26 Round of 16 draw results. Final at Puskás Aréna, Budapest.',
     url: pageUrl,
     siteName: 'Champions League 2025/26',
     type: 'website',

@@ -133,19 +133,11 @@ export function PwaPushManager() {
   }
 
   if (isSupported === null) {
-    return (
-      <div className="text-sm text-[#6b6b6b] dark:text-slate-400">
-        {labels.loading}
-      </div>
-    );
+    return <div className="text-sm text-[#6b6b6b] dark:text-slate-400">{labels.loading}</div>;
   }
 
   if (!isSupported) {
-    return (
-      <p className="text-sm text-[#6b6b6b] dark:text-slate-400">
-        {labels.notSupported}
-      </p>
-    );
+    return <p className="text-sm text-[#6b6b6b] dark:text-slate-400">{labels.notSupported}</p>;
   }
 
   return (

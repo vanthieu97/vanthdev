@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from 'react';
+import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 
 const COOKIE_NAME = 'locale';
 const COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year in seconds
@@ -69,11 +62,7 @@ export function LocaleProvider({ children, initialLocale = null }: LocaleProvide
 
   const value: LocaleContextValue = { locale, setLocale };
 
-  return (
-    <LocaleContext.Provider value={value}>
-      {children}
-    </LocaleContext.Provider>
-  );
+  return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;
 }
 
 export function useLocaleContext(): LocaleContextValue {

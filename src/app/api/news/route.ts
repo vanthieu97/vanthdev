@@ -12,8 +12,7 @@ export async function GET(request: Request) {
     console.error('News API error:', err);
     return NextResponse.json(
       {
-        error:
-          err instanceof Error ? err.message : 'Failed to fetch news',
+        error: err instanceof Error ? err.message : 'Failed to fetch news',
       },
       { status: 500 }
     );

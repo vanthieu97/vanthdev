@@ -23,16 +23,19 @@ type LanguageSwitcherProps = {
   showThemeToggle?: boolean;
 };
 
-export function LanguageSwitcher({ className = '', variant = 'full', alternateUrls, theme = 'dark', showThemeToggle = false }: LanguageSwitcherProps) {
+export function LanguageSwitcher({
+  className = '',
+  variant = 'full',
+  alternateUrls,
+  theme = 'dark',
+  showThemeToggle = false,
+}: LanguageSwitcherProps) {
   const { locale, setLocale } = useLocaleContext();
   const pathname = usePathname();
 
-  const useLinks = alternateUrls && (pathname === alternateUrls.vi || pathname === alternateUrls.en);
-  const activeLocale: Locale = useLinks
-    ? pathname === alternateUrls.en
-      ? 'en'
-      : 'vi'
-    : locale;
+  const useLinks =
+    alternateUrls && (pathname === alternateUrls.vi || pathname === alternateUrls.en);
+  const activeLocale: Locale = useLinks ? (pathname === alternateUrls.en ? 'en' : 'vi') : locale;
 
   const isLight = theme === 'light';
   const containerClass = isLight

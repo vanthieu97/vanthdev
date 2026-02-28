@@ -15,4 +15,3 @@ type NewsResponse = {
   results?: NewsArticle[];
   nextPage?: string;
 };
-

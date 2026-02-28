@@ -43,7 +43,9 @@ export function SiteFooter() {
               </Link>
             </span>
           </div>
-          <p className="text-[#999] dark:text-slate-500 text-xs tracking-wide">Tin tức được cập nhật liên tục</p>
+          <p className="text-[#999] dark:text-slate-500 text-xs tracking-wide">
+            Tin tức được cập nhật liên tục
+          </p>
           {isPwa && (
             <details className="group mt-4 w-full max-w-sm rounded-xl border border-[#e8e6e3] bg-white/50 p-4 dark:border-white/10 dark:bg-white/5">
               <summary className="cursor-pointer list-none text-sm font-medium text-[#1a1a1a] dark:text-white/90">

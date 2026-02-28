@@ -59,9 +59,7 @@ function ArticleCard({ article }: { article: NewsArticle }) {
       href={article.link}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() =>
-        trackArticleClick(article.article_id, article.title, article.source_name)
-      }
+      onClick={() => trackArticleClick(article.article_id, article.title, article.source_name)}
       className="group bg-white rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] dark:bg-[#2d2d3d]/90 dark:border-[#4a4a5a]/60 dark:shadow-lg dark:shadow-black/20 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:border-[#e0e0e0] dark:hover:border-[#5a5a6a] dark:hover:bg-[#333344]/95 hover:-translate-y-1 flex flex-col text-left focus:outline-none focus:ring-2 focus:ring-[#c41e3a] focus:ring-offset-2 focus:ring-offset-[#faf8f5] dark:focus:ring-offset-[#0a0f1a]"
       aria-label={`Đọc bài: ${article.title}`}
     >

@@ -30,17 +30,16 @@ export function SiteHeader({ alternateUrls }: SiteHeaderProps = {}) {
             href="/"
             className="vanthdev-btn-inner inline-flex cursor-pointer items-center gap-2 px-4 py-2 font-semibold text-sm no-underline text-[#1a1a1a] hover:text-[#c41e3a] transition-colors dark:text-white/95 dark:hover:text-amber-400"
           >
-            <img
-              src="/vanthdev-logo.svg"
-              alt=""
-              width={28}
-              height={28}
-              className="shrink-0"
-            />
+            <img src="/vanthdev-logo.svg" alt="" width={28} height={28} className="shrink-0" />
             {siteDisplayName}
           </Link>
         </span>
-        <LanguageSwitcher variant="full" theme={theme} showThemeToggle alternateUrls={alternateUrls} />
+        <LanguageSwitcher
+          variant="full"
+          theme={theme}
+          showThemeToggle
+          alternateUrls={alternateUrls}
+        />
       </div>
     </header>
   );

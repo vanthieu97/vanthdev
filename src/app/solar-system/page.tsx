@@ -18,12 +18,7 @@ export default function SolarSystemPage() {
       <div className="solar-system-stage">
         <div className="solar-system-sun" aria-hidden="true" title="Mặt Trời" />
         {PLANETS.map(({ id }) => (
-          <div
-            key={id}
-            className="solar-system-orbit"
-            data-planet={id}
-            aria-hidden="true"
-          >
+          <div key={id} className="solar-system-orbit" data-planet={id} aria-hidden="true">
             <div
               className="solar-system-planet"
               data-planet={id}

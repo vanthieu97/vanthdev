@@ -212,7 +212,10 @@ export function ChampionsLeagueContent({ locale }: ChampionsLeagueContentProps) 
         <div className="flex justify-center mb-6">
           <div className="relative">
             <div className="absolute inset-0 blur-2xl bg-amber-400/30 dark:bg-amber-400/20 rounded-full scale-150 animate-pulse" />
-            <span className="relative text-6xl md:text-8xl block animate-bounce" style={{ animationDuration: '2s' }}>
+            <span
+              className="relative text-6xl md:text-8xl block animate-bounce"
+              style={{ animationDuration: '2s' }}
+            >
               🏆
             </span>
           </div>
@@ -221,7 +224,9 @@ export function ChampionsLeagueContent({ locale }: ChampionsLeagueContentProps) 
         {/* Venue + Countdown */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 flex-wrap">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/90 dark:bg-[#1e2a35]/90 border border-amber-400/30 shadow-md">
-            <span className="text-lg" aria-hidden>🏟️</span>
+            <span className="text-lg" aria-hidden>
+              🏟️
+            </span>
             <span className="text-sm font-medium text-[#1a1a1a] dark:text-white/90">
               {t.finalVenue} • {t.finalDate}
             </span>
@@ -231,15 +236,17 @@ export function ChampionsLeagueContent({ locale }: ChampionsLeagueContentProps) 
               <span className="text-sm text-amber-800 dark:text-amber-200 font-semibold">
                 {locale === 'vi' ? 'Còn' : 'In'}{' '}
                 <span className="tabular-nums font-bold">{countdown.days}</span>{' '}
-                {locale === 'vi' ? 'ngày' : 'days'}{' '}
-                {locale === 'vi' ? 'đến chung kết' : 'to final'}
+                {locale === 'vi' ? 'ngày' : 'days'} {locale === 'vi' ? 'đến chung kết' : 'to final'}
               </span>
             </div>
           )}
         </div>
 
         {/* Quick nav */}
-        <nav className="flex flex-wrap justify-center gap-2 mb-8" aria-label={locale === 'vi' ? 'Điều hướng nhanh' : 'Quick navigation'}>
+        <nav
+          className="flex flex-wrap justify-center gap-2 mb-8"
+          aria-label={locale === 'vi' ? 'Điều hướng nhanh' : 'Quick navigation'}
+        >
           {[
             { id: 'schedule-r16', label: locale === 'vi' ? 'Lịch 1/8' : 'R16', icon: '📅' },
             { id: 'schedule-qf', label: locale === 'vi' ? 'Tứ kết' : 'QF', icon: '🏆' },
@@ -291,7 +298,10 @@ export function ChampionsLeagueContent({ locale }: ChampionsLeagueContentProps) 
         </section>
 
         {/* Lịch Tứ kết */}
-        <section id="schedule-qf" className="mt-12 pt-8 border-t border-[#e8e6e3] dark:border-white/10 scroll-mt-24">
+        <section
+          id="schedule-qf"
+          className="mt-12 pt-8 border-t border-[#e8e6e3] dark:border-white/10 scroll-mt-24"
+        >
           <SectionHeader icon="🏆" title={t.scheduleQf} />
           <div className="space-y-8">
             {groupEmptySlotsByDate(QF_SCHEDULE).map(({ date, slots }) => {
@@ -339,7 +349,10 @@ export function ChampionsLeagueContent({ locale }: ChampionsLeagueContentProps) 
         </section>
 
         {/* Lịch Chung kết - special styling */}
-        <section id="schedule-final" className="mt-12 pt-8 border-t border-[#e8e6e3] dark:border-white/10 scroll-mt-24">
+        <section
+          id="schedule-final"
+          className="mt-12 pt-8 border-t border-[#e8e6e3] dark:border-white/10 scroll-mt-24"
+        >
           <SectionHeader icon="🏆" title={t.scheduleFinal} />
           <div className="space-y-8">
             {groupEmptySlotsByDate(FINAL_SCHEDULE).map(({ date, slots }) => {
@@ -386,7 +399,10 @@ export function ChampionsLeagueContent({ locale }: ChampionsLeagueContentProps) 
         </section>
 
         {/* Kết quả thi đấu */}
-        <section id="results" className="mt-12 pt-8 border-t border-[#e8e6e3] dark:border-white/10 scroll-mt-24">
+        <section
+          id="results"
+          className="mt-12 pt-8 border-t border-[#e8e6e3] dark:border-white/10 scroll-mt-24"
+        >
           <SectionHeader icon="📊" title={t.resultsTitle} />
 
           <h3 className="text-[#1a1a1a] dark:text-white/90 text-sm font-bold mb-4 flex items-center gap-2">
@@ -461,7 +477,10 @@ export function ChampionsLeagueContent({ locale }: ChampionsLeagueContentProps) 
         </p>
 
         {/* FAQ */}
-        <section id="faq" className="mt-12 pt-8 border-t border-[#e8e6e3] dark:border-white/10 max-w-2xl mx-auto scroll-mt-8">
+        <section
+          id="faq"
+          className="mt-12 pt-8 border-t border-[#e8e6e3] dark:border-white/10 max-w-2xl mx-auto scroll-mt-8"
+        >
           <SectionHeader icon="❓" title={t.faqTitle} />
           <dl className="space-y-4">
             <div className="rounded-xl p-4 bg-white/80 dark:bg-white/5 border border-[#eee] dark:border-white/10">

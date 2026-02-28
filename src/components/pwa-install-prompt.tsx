@@ -12,16 +12,14 @@ const LABELS = {
     title: 'Cài đặt ứng dụng',
     addToHome: 'Thêm vào màn hình chính',
     hint: 'Cài đặt để truy cập nhanh từ màn hình chính.',
-    iosHint:
-      'Để cài đặt trên iOS: nhấn nút chia sẻ và chọn "Thêm vào Màn hình chính".',
+    iosHint: 'Để cài đặt trên iOS: nhấn nút chia sẻ và chọn "Thêm vào Màn hình chính".',
     dismiss: 'Đóng',
   },
   en: {
     title: 'Install app',
     addToHome: 'Add to Home Screen',
     hint: 'Install for quick access from your home screen.',
-    iosHint:
-      'To install on iOS: tap the share button and select "Add to Home Screen".',
+    iosHint: 'To install on iOS: tap the share button and select "Add to Home Screen".',
     dismiss: 'Dismiss',
   },
 };
@@ -70,7 +68,8 @@ export function PwaInstallPrompt() {
     if (typeof window === 'undefined') return;
 
     setIsIOS(
-      /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as unknown as { MSStream?: boolean }).MSStream
+      /iPad|iPhone|iPod/.test(navigator.userAgent) &&
+        !(window as unknown as { MSStream?: boolean }).MSStream
     );
     setIsStandalone(
       window.matchMedia('(display-mode: standalone)').matches ||
@@ -132,9 +131,7 @@ export function PwaInstallPrompt() {
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <h3 className="font-semibold text-[#1a1a1a] dark:text-white/95">
-            {labels.title}
-          </h3>
+          <h3 className="font-semibold text-[#1a1a1a] dark:text-white/95">{labels.title}</h3>
           <p className="mt-1 text-sm text-[#6b6b6b] dark:text-slate-400">
             {isIOS ? labels.iosHint : labels.hint}
           </p>

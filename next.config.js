@@ -36,6 +36,16 @@ const nextConfig = {
         hostname: 'cdn.24h.com.vn',
         pathname: '/upload/livescore/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
+        pathname: '/vi/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ui-avatars.com',
+        pathname: '/api/**',
+      },
     ],
   },
   async redirects() {

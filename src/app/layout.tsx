@@ -30,9 +30,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeInitScript />
         <ThemeProvider>
           <LocaleProvider>
-            <ConditionalSiteHeader />
-            {children}
-            <ConditionalSiteFooter />
+            <div className="flex min-h-screen flex-col">
+              <ConditionalSiteHeader />
+              <main className="flex flex-1 flex-col">
+                <div className="flex-1 flex flex-col min-h-0 bg-[#faf8f5] dark:bg-[#0a0f1a]">
+                  {children}
+                </div>
+              </main>
+              <ConditionalSiteFooter />
+            </div>
             {gaId && <GoogleAnalytics gaId={gaId} />}
             <ScrollToTop />
             <PwaInstallPrompt />

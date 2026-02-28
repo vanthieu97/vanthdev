@@ -8,14 +8,56 @@ const ENTRY_POINTS: Record<
   Array<{ href: string; icon: string; title: string; desc: string }>
 > = {
   vi: [
-    { href: '/lunar-new-year-countdown', icon: '🎆', title: 'Đếm ngược Tết', desc: 'Đếm ngược đến Giao thừa Tết Nguyên đán' },
-    { href: '/solar-system', icon: '🪐', title: 'Hệ Mặt Trời', desc: 'Khám phá các hành tinh quay quanh Mặt Trời' },
-    { href: '/champions-league', icon: '⚽', title: 'Cúp C1', desc: 'Kết quả bốc thăm vòng 1/8 Champions League' },
+    {
+      href: '/lunar-new-year-countdown',
+      icon: '🎆',
+      title: 'Đếm ngược Tết',
+      desc: 'Đếm ngược đến Giao thừa Tết Nguyên đán',
+    },
+    {
+      href: '/solar-system',
+      icon: '🪐',
+      title: 'Hệ Mặt Trời',
+      desc: 'Khám phá các hành tinh quay quanh Mặt Trời',
+    },
+    {
+      href: '/champions-league',
+      icon: '⚽',
+      title: 'Cúp C1',
+      desc: 'Kết quả bốc thăm vòng 1/8 Champions League',
+    },
+    {
+      href: '/film-reviews',
+      icon: '🎬',
+      title: 'Review phim',
+      desc: 'Đánh giá phim điện ảnh Việt Nam',
+    },
   ],
   en: [
-    { href: '/lunar-new-year-countdown', icon: '🎆', title: 'Lunar New Year Countdown', desc: 'Countdown to Lunar New Year Eve' },
-    { href: '/solar-system', icon: '🪐', title: 'Solar System', desc: 'Explore the planets orbiting the Sun' },
-    { href: '/champions-league', icon: '⚽', title: 'Champions League', desc: 'Round of 16 draw results' },
+    {
+      href: '/lunar-new-year-countdown',
+      icon: '🎆',
+      title: 'Lunar New Year Countdown',
+      desc: 'Countdown to Lunar New Year Eve',
+    },
+    {
+      href: '/solar-system',
+      icon: '🪐',
+      title: 'Solar System',
+      desc: 'Explore the planets orbiting the Sun',
+    },
+    {
+      href: '/champions-league',
+      icon: '⚽',
+      title: 'Champions League',
+      desc: 'Round of 16 draw results',
+    },
+    {
+      href: '/film-reviews',
+      icon: '🎬',
+      title: 'Film Review',
+      desc: 'Vietnamese film reviews and ratings',
+    },
   ],
 };
 
@@ -32,7 +74,7 @@ export function HomeEntryPoints() {
   return (
     <section className="mb-4 md:mb-6" aria-label={sectionLabel}>
       <h2 className="sr-only">{sectionLabel}</h2>
-      <div className="grid sm:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {points.map(({ href, icon, title, desc }) => (
           <Link
             key={href}

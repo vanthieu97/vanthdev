@@ -6,11 +6,7 @@ const vapidPublicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
 const vapidPrivateKey = process.env.VAPID_PRIVATE_KEY;
 
 if (vapidPublicKey && vapidPrivateKey) {
-  webpush.setVapidDetails(
-    'mailto:support@vanthdev.com',
-    vapidPublicKey,
-    vapidPrivateKey
-  );
+  webpush.setVapidDetails('mailto:support@vanthdev.com', vapidPublicKey, vapidPrivateKey);
 }
 
 // In-memory store for demo. In production, use a database.
@@ -32,11 +28,7 @@ export async function unsubscribeUser(endpoint?: string) {
   return { success: true };
 }
 
-export async function sendNotification(payload: {
-  title: string;
-  body?: string;
-  icon?: string;
-}) {
+export async function sendNotification(payload: { title: string; body?: string; icon?: string }) {
   if (!vapidPublicKey || !vapidPrivateKey) {
     return { success: false, error: 'VAPID keys not configured' };
   }
@@ -51,9 +43,7 @@ export async function sendNotification(payload: {
   });
 
   const results = await Promise.allSettled(
-    Array.from(subscriptions.values()).map((sub) =>
-      webpush.sendNotification(sub, message)
-    )
+    Array.from(subscriptions.values()).map((sub) => webpush.sendNotification(sub, message))
   );
 
   const failed = results.filter((r) => r.status === 'rejected').length;
