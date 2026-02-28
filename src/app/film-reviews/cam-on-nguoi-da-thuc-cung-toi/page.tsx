@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FilmPoster } from '@/components/film-poster';
+import { FilmYoutubeReviews } from '@/components/film-youtube-reviews';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
-const pageUrl = `${baseUrl}/film-reviews/thank-you-for-staying-awake-with-me`;
+const pageUrl = `${baseUrl}/film-reviews/cam-on-nguoi-da-thuc-cung-toi`;
 const TRAILER_YOUTUBE_ID = 'uf2oOeJ-Z3s';
 const POSTER_URL = 'https://img.youtube.com/vi/uf2oOeJ-Z3s/hqdefault.jpg';
+
+const YOUTUBE_REVIEWS: { youtubeId: string; title: string; channel?: string }[] = [];
 
 export const metadata: Metadata = {
   title: 'Review phim Cảm ơn người đã thức cùng tôi - Khúc ca điện ảnh ấm áp tình thân',
@@ -98,7 +101,7 @@ const breadcrumbJsonLd = {
   ],
 };
 
-export default function ThankYouForStayingAwakeWithMePage() {
+export default function CamOnNguoiDaThucCungToiPage() {
   return (
     <div className="bg-[#faf8f5] dark:bg-[#0a0f1a]">
       <script
@@ -195,6 +198,11 @@ export default function ThankYouForStayingAwakeWithMePage() {
             người xem câu hỏi: &quot;Ước mơ của bạn là gì?&quot; và &quot;Mình muốn thực hiện ước mơ
             đó cùng ai?&quot;
           </p>
+          <p>
+            Theo Vietnam.vn, phim là lời tri ân dành cho những ước mơ dang dở và niềm hy vọng để
+            người xem có thể tiếp tục hành trình đã bỏ dở. Bối cảnh phim trải dài từ đô thị hiện đại
+            đến không gian nghệ thuật, tạo nên hành trình cảm xúc đa chiều cho nhân vật chính.
+          </p>
 
           <h2 className="text-xl font-semibold mt-10 mb-4 text-[#1a1a1a] dark:text-white/95">
             Dàn diễn viên – Bộ ba trẻ tài năng
@@ -239,10 +247,12 @@ export default function ThankYouForStayingAwakeWithMePage() {
           <p>
             <strong>Phạm Hải Âu</strong> là nhà soạn nhạc nền chính. Phim có tới{' '}
             <strong>14 ca khúc</strong>, 10 trong số đó là sáng tác hoàn toàn mới dành riêng cho
-            phim – được ghi nhận là tác phẩm điện ảnh Việt Nam có số lượng nhạc phim nhiều nhất. Ca
-            khúc &quot;Mộng mơ là chuyện trẻ con&quot; do Võ Phan Kim Khánh thể hiện vang lên trong
-            teaser trailer, đặt trong các đại cảnh nhảy múa công phu. Bài hát chủ đề &quot;Cảm ơn
-            người đã thức cùng tôi&quot; do Phùng Khánh Linh trình bày.
+            phim – được ghi nhận là tác phẩm điện ảnh Việt Nam có số lượng nhạc phim nhiều nhất mọi
+            thời đại. Ca khúc chính &quot;Đến lúc bông hoa sẽ nở&quot; do nhạc sĩ trẻ Huỳnh Tâm
+            sáng tác, được lựa chọn từ gần 200 bài dự thi. Ca khúc &quot;Mộng mơ là chuyện trẻ
+            con&quot; do Võ Phan Kim Khánh thể hiện vang lên trong teaser trailer, đặt trong các đại
+            cảnh nhảy múa công phu. Bài hát chủ đề &quot;Cảm ơn người đã thức cùng tôi&quot; do
+            Phùng Khánh Linh trình bày.
           </p>
 
           <h2 className="text-xl font-semibold mt-10 mb-4 text-[#1a1a1a] dark:text-white/95">
@@ -250,10 +260,12 @@ export default function ThankYouForStayingAwakeWithMePage() {
           </h2>
           <p>
             Đạo diễn Chung Chí Công từng gây ấn tượng với &quot;Trời sáng rồi ta ngủ đi thôi&quot;
-            (2019) – chất nhạc indie đầy cảm xúc, nhiều ca khúc do chính anh viết lời. Âm nhạc đã
-            trở thành &quot;ngôn ngữ riêng&quot; không thể tách rời trong thế giới điện ảnh của nam
-            đạo diễn. Phim quay tại New York và Busan, có cảnh tại cầu thang Joker huyền thoại ở
-            Bronx.
+            (2019) – chất nhạc indie đầy cảm xúc, nhiều ca khúc do chính anh viết lời. Theo Tiền
+            Phong, đây là sự trở lại của nam đạo diễn sau 6 năm vắng bóng. Chung Chí Công khai thác
+            thế mạnh quen thuộc là kể chuyện gia đình bằng ngôn ngữ điện ảnh giàu chất thơ, đậm
+            tinh thần Việt kết hợp màu sắc âm nhạc. Phim quay tại New York và Busan, có cảnh tại cầu
+            thang Joker huyền thoại ở Bronx. Âm nhạc đã trở thành &quot;ngôn ngữ riêng&quot; không
+            thể tách rời trong thế giới điện ảnh của anh.
           </p>
 
           <h2 className="text-xl font-semibold mt-10 mb-4 text-[#1a1a1a] dark:text-white/95">
@@ -277,8 +289,10 @@ export default function ThankYouForStayingAwakeWithMePage() {
           </h2>
           <p>
             Nhẹ nhàng như một lá thư, sâu sắc như một bản nhạc, phim đem đến câu chuyện ấm áp về
-            tình thân và ước mơ hoài bão. Được kỳ vọng trở thành &quot;làn gió mới&quot; của điện
-            ảnh Việt đầu năm 2026 bằng thể loại phim âm nhạc độc đáo.
+            tình thân và ước mơ hoài bão. Vietnam.vn nhận định phim là khúc ca điện ảnh ấm áp tình
+            thân, kết nối giữa quá khứ và hiện tại qua âm nhạc. Được kỳ vọng trở thành &quot;làn
+            gió mới&quot; của điện ảnh Việt đầu năm 2026 bằng thể loại phim âm nhạc độc đáo, phim
+            phù hợp với khán giả yêu thích dòng phim tâm lý lãng mạn và âm nhạc.
           </p>
 
           <h2 className="text-xl font-semibold mt-10 mb-4 text-[#1a1a1a] dark:text-white/95">
@@ -311,8 +325,10 @@ export default function ThankYouForStayingAwakeWithMePage() {
             </li>
           </ul>
 
+          <FilmYoutubeReviews reviews={YOUTUBE_REVIEWS} filmTitle="Cảm ơn người đã thức cùng tôi" />
+
           <p className="mt-10 text-[#6b6b6b] dark:text-slate-400 text-sm">
-            Nguồn tham khảo: Wikipedia, Tạp chí Đẹp, Vietnam.vn, Hà Nội Mới, ELLE Việt Nam
+            Nguồn tham khảo: Wikipedia, Tiền Phong, Vietnam.vn, Phụ nữ Việt Nam, Tạp chí Đẹp, Hà Nội Mới, ELLE Việt Nam
           </p>
         </div>
       </article>

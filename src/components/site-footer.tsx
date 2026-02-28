@@ -10,16 +10,19 @@ function getSiteDisplayName(): string {
   return hostname.replace(/^www\./, '') || hostname;
 }
 
+function isLocalEnv(): boolean {
+  if (typeof window === 'undefined') return false;
+  const h = window.location.hostname;
+  return h === 'localhost' || h === '127.0.0.1';
+}
+
 export function SiteFooter() {
   const siteDisplayName = getSiteDisplayName();
-  const [isPwa, setIsPwa] = useState(false);
+  const [showPushSection, setShowPushSection] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const standalone =
-      window.matchMedia('(display-mode: standalone)').matches ||
-      (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
-    setIsPwa(standalone);
+    setShowPushSection(isLocalEnv());
   }, []);
 
   return (
@@ -46,7 +49,7 @@ export function SiteFooter() {
           <p className="text-[#999] dark:text-slate-500 text-xs tracking-wide">
             Tin tức được cập nhật liên tục
           </p>
-          {isPwa && (
+          {showPushSection && (
             <details className="group mt-4 w-full max-w-sm rounded-xl border border-[#e8e6e3] bg-white/50 p-4 dark:border-white/10 dark:bg-white/5">
               <summary className="cursor-pointer list-none text-sm font-medium text-[#1a1a1a] dark:text-white/90">
                 🔔 Thông báo đẩy

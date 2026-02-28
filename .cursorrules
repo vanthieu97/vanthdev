@@ -79,3 +79,7 @@ fetch(`/api/news?page=${nextPage}`)
 
 - Format: `feat:`, `fix:`, `refactor:`, `chore:`
 - Messages concise, describe changes clearly. Use bullet points for multiple changes.
+
+## Build
+
+- **Không chạy build** (`npm run build`) trừ khi user yêu cầu rõ ràng. Chỉ sửa code, không verify bằng build.

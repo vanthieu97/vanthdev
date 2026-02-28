@@ -53,7 +53,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/film-reviews/thank-you-for-staying-awake-with-me`,
+      url: `${baseUrl}/film-reviews/cam-on-nguoi-da-thuc-cung-toi`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/film-reviews/nha-ba-toi-mot-phong`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/film-reviews/tho-oi`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/film-reviews/mui-pho`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.85,

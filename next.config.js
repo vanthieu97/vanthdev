@@ -46,12 +46,32 @@ const nextConfig = {
         hostname: 'ui-avatars.com',
         pathname: '/api/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'iguov8nhvyobj.vcdn.cloud',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cgv.vn',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.cgv.vn',
+        pathname: '/**',
+      },
     ],
   },
   async redirects() {
     return [
       { source: '/c1', destination: '/champions-league', permanent: true },
       { source: '/en/c1', destination: '/en/champions-league', permanent: true },
+      {
+        source: '/film-reviews/thank-you-for-staying-awake-with-me',
+        destination: '/film-reviews/cam-on-nguoi-da-thuc-cung-toi',
+        permanent: true,
+      },
     ];
   },
 };
