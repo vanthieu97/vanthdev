@@ -38,13 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/champions-league`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.95,
     },
     {
       url: `${baseUrl}/en/champions-league`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
   ];
 }

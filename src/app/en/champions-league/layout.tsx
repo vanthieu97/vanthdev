@@ -2,19 +2,22 @@ import type { Metadata } from 'next';
 
 export const dynamic = 'force-static';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
 const pageUrl = `${baseUrl}/en/champions-league`;
 const viUrl = `${baseUrl}/champions-league`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: 'UEFA Champions League 2025/26 Round of 16 Draw Results',
+  title: 'Champions League 2025/26 - Round of 16 Schedule & Results',
   description:
-    'UEFA Champions League 2025/26 Round of 16 draw results. Fixtures: PSG vs Chelsea, Real Madrid vs Man City, Barcelona vs Newcastle. Final 30 May 2026 at Puskás Aréna, Budapest.',
+    'Champions League 2025/26: Round of 16 schedule and results. PSG vs Chelsea, Real Madrid vs Man City, Barcelona vs Newcastle. Final 30 May 2026 at Puskás Aréna, Budapest.',
   keywords: [
     'Champions League',
-    'UEFA',
-    'Round of 16 draw',
+    'UEFA Champions League',
+    'Cup C1',
+    'Round of 16',
+    'schedule',
+    'results',
     '2025 2026',
     'Budapest',
     'PSG Chelsea',
@@ -46,9 +49,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true },
-  },
-  icons: {
-    icon: '/c1-favicon.svg',
   },
 };
 
