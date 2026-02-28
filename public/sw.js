@@ -3,8 +3,8 @@ self.addEventListener('push', function (event) {
     const data = event.data.json();
     const options = {
       body: data.body ?? '',
-      icon: data.icon ?? '/lunar-favicon.svg',
-      badge: '/lunar-favicon.svg',
+      icon: data.icon ?? '/vanthdev-logo-192.png',
+      badge: '/vanthdev-logo-192.png',
       vibrate: [100, 50, 100],
       data: {
         dateOfArrival: Date.now(),

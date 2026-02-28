@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="vd-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1a"/>
+      <stop offset="100%" stop-color="#0f1525"/>
+    </linearGradient>
+    <linearGradient id="vd-icon" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ebeaea"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square with subtle inner padding feel -->
+  <rect width="64" height="64" rx="16" fill="url(#vd-bg)"/>
+  <!-- V + AI sparkle, centered as a group -->
+  <g transform="translate(0 -2)">
+    <!-- Refined V: wider, thicker, more balanced -->
+    <path
+      d="M16 20 L32 44 L48 20 L42 20 L32 36 L22 20 Z"
+      fill="url(#vd-icon)"
+      transform="translate(32 32) scale(1.12) translate(-32 -32) translate(0 -4)"
+    />
+    <!-- AI sparkle accent (✦) - matches vanthdev button AI icon -->
+    <path
+      d="M32 47 L33.5 50.5 L37 51 L33.5 51.5 L32 55 L30.5 51.5 L27 51 L30.5 50.5 Z"
+      fill="white"
+      opacity="0.95"
+      transform="translate(32 51) scale(1.6) translate(-32 -51)"
+    />
+  </g>
+</svg>

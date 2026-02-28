@@ -17,15 +17,21 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: 'vi',
     icons: [
       {
-        src: '/lunar-favicon.svg',
-        sizes: 'any',
-        type: 'image/svg+xml',
+        src: '/vanthdev-logo-192.png',
+        sizes: '192x192',
+        type: 'image/png',
         purpose: 'any',
       },
       {
-        src: '/lunar-favicon.svg',
-        sizes: 'any',
-        type: 'image/svg+xml',
+        src: '/vanthdev-logo-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/vanthdev-logo-512.png',
+        sizes: '512x512',
+        type: 'image/png',
         purpose: 'maskable',
       },
     ],

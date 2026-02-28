@@ -64,6 +64,12 @@ fetch(`/api/news?page=${nextPage}`)
 - **Imports**: `@/` alias for `src/`. Prefer absolute paths.
 - **Env**: Use `process.env.NEXT_PUBLIC_*` (client), `process.env.*` (server). Add `.env.example` when needed.
 
+## Image Conversion
+
+- **SVG → PNG**: Use `rsvg-convert` (librsvg). Example: `rsvg-convert -o output.png input.svg`
+- **Resize**: Add `-w WIDTH` or `-h HEIGHT` for specific dimensions, e.g. `rsvg-convert -w 192 -o icon-192.png logo.svg`
+- Prefer `rsvg-convert` over ImageMagick for SVG rendering quality.
+
 ## Git Commits
 
 - Format: `feat:`, `fix:`, `refactor:`, `chore:`

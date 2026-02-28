@@ -47,7 +47,7 @@ export async function sendNotification(payload: {
   const message = JSON.stringify({
     title: payload.title,
     body: payload.body ?? '',
-    icon: payload.icon ?? '/lunar-favicon.svg',
+    icon: payload.icon ?? '/vanthdev-logo-192.png',
   });
 
   const results = await Promise.allSettled(

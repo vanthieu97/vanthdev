@@ -18,9 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'vanthdev.com',
   },
-  icons: {
-    icon: '/lunar-favicon.svg',
-  },
+  // Favicon via app/icon.png, apple via app/apple-icon.png (Next.js file convention)
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
