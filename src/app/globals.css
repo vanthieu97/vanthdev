@@ -77,6 +77,22 @@ body {
   background: #1a2332;
 }
 
+/* C1 trophy animation - glow pulse + gentle float */
+@keyframes c1-trophy-shine {
+  0%, 100% {
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.4));
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.7)) drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
+    transform: translateY(-4px) scale(1.05);
+  }
+}
+
+.c1-trophy {
+  animation: c1-trophy-shine 2.8s ease-in-out infinite;
+}
+
 /* Dark mode gradient overlay - champions league style */
 .dark body::before {
   content: '';

@@ -47,6 +47,9 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
+  icons: {
+    icon: '/c1-favicon.svg',
+  },
 };
 
 const jsonLd = {

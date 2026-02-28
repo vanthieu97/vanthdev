@@ -7,13 +7,16 @@ import { ThemeProvider } from '@/contexts/theme-context';
 import { ThemeInitScript } from '@/components/theme-init-script';
 import { ScrollToTop } from '@/components/scroll-to-top';
 import { ConditionalSiteFooter } from '@/components/conditional-site-footer';
-import { SiteFooter } from '@/components/site-footer';
+import { ConditionalSiteHeader } from '@/components/conditional-site-header';
 import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Lunar New Year Countdown',
   description: 'Countdown to Lunar New Year with country and timezone support.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com'),
+  openGraph: {
+    siteName: 'vanthdev.com',
+  },
   icons: {
     icon: '/lunar-favicon.svg',
   },
@@ -28,10 +31,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeInitScript />
         <ThemeProvider>
           <LocaleProvider>
+            <ConditionalSiteHeader />
             {children}
-            <ConditionalSiteFooter>
-              <SiteFooter />
-            </ConditionalSiteFooter>
+            <ConditionalSiteFooter />
             {gaId && <GoogleAnalytics gaId={gaId} />}
             <ScrollToTop />
             <Analytics />

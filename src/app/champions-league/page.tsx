@@ -11,5 +11,5 @@ export default function ChampionsLeaguePage() {
     setLocale('vi');
   }, [setLocale]);
 
-  return <ChampionsLeagueContent locale="vi" useUrlSwitcher />;
+  return <ChampionsLeagueContent locale="vi" />;
 }

@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: 'upload.wikimedia.org',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.24h.com.vn',
+        pathname: '/upload/livescore/**',
+      },
     ],
   },
   async redirects() {

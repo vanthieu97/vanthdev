@@ -1,11 +1,12 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { shouldShowSiteLayout } from '@/lib/site-layout';
+import { SiteFooter } from './site-footer';
 
-/** Renders children (SiteFooter) except on routes that have their own in layout */
-export function ConditionalSiteFooter({ children }: { children: React.ReactNode }) {
+export function ConditionalSiteFooter() {
   const pathname = usePathname();
-  if (pathname?.startsWith('/lunar-new-year-countdown')) return null;
-  if (pathname === '/solar-system') return null;
-  return <>{children}</>;
+  if (!shouldShowSiteLayout(pathname)) return null;
+
+  return <SiteFooter />;
 }

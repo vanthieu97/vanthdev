@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const dynamic = 'force-static';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
 const pageUrl = `${baseUrl}/champions-league`;
 const enUrl = `${baseUrl}/en/champions-league`;
 
@@ -25,10 +25,11 @@ export const metadata: Metadata = {
     title: 'Kết quả bốc thăm vòng 1/8 Cúp C1 châu Âu 2025/2026',
     description: 'Kết quả bốc thăm vòng 1/8 UEFA Champions League 2025/2026. Chung kết tại Puskás Aréna, Budapest.',
     url: pageUrl,
-    siteName: 'Champions League 2025/26',
+    siteName: 'vanthdev.com',
     type: 'website',
     locale: 'vi_VN',
     alternateLocale: 'en_US',
+    images: [{ url: '/og-c1.png', width: 1200, height: 630, alt: 'Kết quả bốc thăm vòng 1/8 Cúp C1 2025/2026' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -47,6 +48,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true },
+  },
+  icons: {
+    icon: '/c1-favicon.svg',
   },
 };
 
@@ -84,6 +88,14 @@ const jsonLd = {
           acceptedAnswer: {
             '@type': 'Answer',
             text: 'Mỗi cặp đấu đá hai lượt (đi – về). Đội ghi nhiều bàn thắng hơn sau hai lượt đi tiếp. Các đội đá lượt về trên sân nhà.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Các cặp đấu vòng 1/8 C1 2025/26?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'PSG vs Chelsea, Galatasaray vs Liverpool, Real Madrid vs Man City, Atalanta vs Bayern München, Newcastle vs Barcelona, Atleti vs Tottenham, Bodø/Glimt vs Sporting CP, Leverkusen vs Arsenal.',
           },
         },
       ],

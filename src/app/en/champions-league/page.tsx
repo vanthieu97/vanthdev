@@ -11,5 +11,5 @@ export default function EnChampionsLeaguePage() {
     setLocale('en');
   }, [setLocale]);
 
-  return <ChampionsLeagueContent locale="en" useUrlSwitcher />;
+  return <ChampionsLeagueContent locale="en" />;
 }

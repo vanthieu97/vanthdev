@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import { SiteFooter } from '@/components/site-footer';
 
 export const dynamic = 'force-static';
 
@@ -32,7 +31,6 @@ export default function LunarNewYearCountdownLayout({ children }: { children: Re
           {children}
         </Suspense>
       </div>
-      <SiteFooter />
     </div>
   );
 }

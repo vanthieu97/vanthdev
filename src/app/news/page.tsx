@@ -1,5 +1,4 @@
 import { fetchVietnamNews } from '@/lib/news';
-import { ThemeToggle } from '@/components/theme-toggle';
 import NewsList from './news-list';
 
 export const dynamic = 'force-dynamic';
@@ -33,12 +32,12 @@ export default async function VietnamNewsPage(props: VietnamNewsPageProps) {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#faf8f5] p-6 md:p-8">
+      <div className="min-h-screen bg-[#faf8f5] dark:bg-[#0a0f1a] p-6 md:p-8">
         <header className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-[#1a1a1a] tracking-tight">Tin tức Việt Nam</h1>
+          <h1 className="text-3xl font-bold text-[#1a1a1a] dark:text-white/95 tracking-tight">Tin tức Việt Nam</h1>
         </header>
         <div className="text-center py-16 px-4">
-          <p className="text-red-600 font-medium">{error}</p>
+          <p className="text-red-600 dark:text-red-400 font-medium">{error}</p>
         </div>
       </div>
     );
@@ -82,11 +81,6 @@ export default async function VietnamNewsPage(props: VietnamNewsPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-6xl mx-auto px-4 py-8 md:px-6 md:py-12">
-        {!embedded && (
-          <div className="flex justify-end mb-4">
-            <ThemeToggle standalone />
-          </div>
-        )}
         <header className="mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c41e3a] text-white text-sm font-semibold mb-4">
             <span>📅</span>
