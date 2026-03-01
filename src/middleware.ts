@@ -9,7 +9,7 @@ function getLocaleFromRequest(request: NextRequest): string {
   if (cookie && isValidLocale(cookie)) return cookie;
   const acceptLang = request.headers.get('accept-language') ?? '';
   const preferred = acceptLang.split(',')[0]?.split('-')[0]?.toLowerCase();
-  return preferred === 'vi' ? 'vi' : 'en';
+  return preferred === 'en' ? 'en' : DEFAULT_LOCALE;
 }
 
 export function middleware(request: NextRequest) {
