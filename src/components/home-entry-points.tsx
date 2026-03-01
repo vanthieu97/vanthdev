@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useLocale, type Locale } from '@/hooks/use-locale';
+import { getLocalizedPath } from '@/lib/i18n/config';
 
 const ENTRY_POINTS: Record<
   Locale,
@@ -66,7 +67,7 @@ export function HomeEntryPoints() {
         {points.map(({ href, icon, title, desc }) => (
           <Link
             key={href}
-            href={href}
+            href={getLocalizedPath(locale, href)}
             className="group flex items-start gap-4 p-4 md:p-5 rounded-xl
               bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee]
               dark:bg-[#2d2d3d]/90 dark:border-[#4a4a5a]/60 dark:shadow-lg dark:shadow-black/20

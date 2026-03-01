@@ -1,110 +1,41 @@
 import type { MetadataRoute } from 'next';
+import { getCanonicalUrl, LOCALES, type Locale } from '@/lib/i18n/config';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
 
+const ROUTES: Array<{ path: string; changeFrequency: 'daily' | 'weekly' | 'monthly' | 'yearly'; priority: number }> = [
+  { path: '', changeFrequency: 'daily', priority: 1 },
+  { path: '/lunar-new-year-countdown', changeFrequency: 'yearly', priority: 1 },
+  { path: '/smash-glass', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/solar-system', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/news', changeFrequency: 'daily', priority: 0.95 },
+  { path: '/news/israel-tan-cong-iran', changeFrequency: 'weekly', priority: 0.85 },
+  { path: '/champions-league', changeFrequency: 'weekly', priority: 0.95 },
+  { path: '/film-reviews', changeFrequency: 'weekly', priority: 0.9 },
+  { path: '/film-reviews/cam-on-nguoi-da-thuc-cung-toi', changeFrequency: 'monthly', priority: 0.85 },
+  { path: '/film-reviews/nha-ba-toi-mot-phong', changeFrequency: 'monthly', priority: 0.85 },
+  { path: '/film-reviews/tho-oi', changeFrequency: 'monthly', priority: 0.85 },
+  { path: '/film-reviews/mui-pho', changeFrequency: 'monthly', priority: 0.85 },
+  { path: '/gia-vang', changeFrequency: 'daily', priority: 0.95 },
+  { path: '/news/luat-ai-viet-nam-2026', changeFrequency: 'weekly', priority: 0.9 },
+  { path: '/news/iphone-18-pro-max', changeFrequency: 'weekly', priority: 0.85 },
+  { path: '/news/blackpink-100-trieu-subscribers', changeFrequency: 'weekly', priority: 0.85 },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/lunar-new-year-countdown`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/smash-glass`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/solar-system`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/news`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.95,
-    },
-    {
-      url: `${baseUrl}/news/israel-tan-cong-iran`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/champions-league`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.95,
-    },
-    {
-      url: `${baseUrl}/en/champions-league`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/film-reviews`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/film-reviews/cam-on-nguoi-da-thuc-cung-toi`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/film-reviews/nha-ba-toi-mot-phong`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/film-reviews/tho-oi`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/film-reviews/mui-pho`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/gia-vang`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.95,
-    },
-    {
-      url: `${baseUrl}/news/luat-ai-viet-nam-2026`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/news/iphone-18-pro-max`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/news/blackpink-100-trieu-subscribers`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    },
-  ];
+  const entries: MetadataRoute.Sitemap = [];
+  const now = new Date();
+
+  for (const locale of LOCALES) {
+    for (const { path, changeFrequency, priority } of ROUTES) {
+      entries.push({
+        url: getCanonicalUrl(baseUrl, locale as Locale, path || '/'),
+        lastModified: now,
+        changeFrequency,
+        priority,
+      });
+    }
+  }
+
+  return entries;
 }

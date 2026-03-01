@@ -1,50 +1,37 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { LocaleProvider } from '@/contexts/locale-context';
 import { ThemeProvider } from '@/contexts/theme-context';
 import { ThemeInitScript } from '@/components/theme-init-script';
-import { ScrollToTop } from '@/components/scroll-to-top';
-import { ConditionalSiteFooter } from '@/components/conditional-site-footer';
-import { ConditionalSiteHeader } from '@/components/conditional-site-header';
-import { PwaInstallPrompt } from '@/components/pwa-install-prompt';
+import { isValidLocale } from '@/lib/i18n/config';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Lunar New Year Countdown',
-  description: 'Countdown to Lunar New Year with country and timezone support.',
+  title: 'vanthdev.com',
+  description: 'Tin tức Việt Nam, Cúp C1 Champions League, giá vàng, review phim.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com'),
   openGraph: {
     siteName: 'vanthdev.com',
   },
-  // Favicon via app/icon.png, apple via app/apple-icon.png (Next.js file convention)
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const headersList = await headers();
+  const localeHeader = headersList.get('x-locale');
+  const lang = localeHeader && isValidLocale(localeHeader) ? localeHeader : 'vi';
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body>
         <ThemeInitScript />
         <ThemeProvider>
-          <LocaleProvider>
-            <div className="flex min-h-screen flex-col">
-              <ConditionalSiteHeader />
-              <main className="flex flex-1 flex-col">
-                <div className="flex-1 flex flex-col min-h-0 bg-[#faf8f5] dark:bg-[#0a0f1a]">
-                  {children}
-                </div>
-              </main>
-              <ConditionalSiteFooter />
-            </div>
-            {gaId && <GoogleAnalytics gaId={gaId} />}
-            <ScrollToTop />
-            <PwaInstallPrompt />
-            <Analytics />
-            <SpeedInsights />
-          </LocaleProvider>
+          {children}
+          {gaId && <GoogleAnalytics gaId={gaId} />}
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

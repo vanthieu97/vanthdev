@@ -4,11 +4,17 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocaleContext, type Locale } from '@/contexts/locale-context';
 import { ThemeToggle } from './theme-toggle';
+import { getLocalizedPath as getPathForLocale, getPathWithoutLocale, LOCALES } from '@/lib/i18n/config';
 
 const LOCALE_LABELS: Record<Locale, string> = {
   vi: 'Tiếng Việt',
   en: 'English',
 };
+
+function getLocalizedPath(pathname: string, newLocale: Locale): string {
+  const pathWithoutLocale = getPathWithoutLocale(pathname);
+  return getPathForLocale(newLocale, pathWithoutLocale);
+}
 
 type LanguageSwitcherProps = {
   /** Optional class for the container */
@@ -33,8 +39,7 @@ export function LanguageSwitcher({
   const { locale, setLocale } = useLocaleContext();
   const pathname = usePathname();
 
-  const useLinks =
-    alternateUrls && (pathname === alternateUrls.vi || pathname === alternateUrls.en);
+  const useLinks = alternateUrls && (pathname === alternateUrls.vi || pathname === alternateUrls.en);
   const activeLocale: Locale = useLinks ? (pathname === alternateUrls.en ? 'en' : 'vi') : locale;
 
   const isLight = theme === 'light';
@@ -54,7 +59,7 @@ export function LanguageSwitcher({
           <span className="w-px h-4 bg-[#e0e0e0] dark:bg-white/20 shrink-0" aria-hidden />
         </>
       )}
-      {(['vi', 'en'] as const).map((l) => {
+      {LOCALES.map((l) => {
         const isActive = activeLocale === l;
         const baseClass = isLight
           ? `cursor-pointer rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
@@ -68,33 +73,21 @@ export function LanguageSwitcher({
                 : 'text-slate-400 hover:bg-white/5 hover:text-white/80'
             }`;
 
-        if (useLinks && alternateUrls) {
-          const href = alternateUrls[l];
-          const isCurrentPage = pathname === href;
-          return (
-            <Link
-              key={l}
-              href={href}
-              className={baseClass}
-              aria-current={isCurrentPage ? 'page' : undefined}
-              aria-label={LOCALE_LABELS[l]}
-            >
-              {variant === 'full' ? LOCALE_LABELS[l] : l.toUpperCase()}
-            </Link>
-          );
-        }
+        const href = useLinks && alternateUrls ? alternateUrls[l] : getLocalizedPath(pathname, l);
+        const isCurrentPage = pathname === href;
 
         return (
-          <button
+          <Link
             key={l}
-            type="button"
-            onClick={() => setLocale(l)}
+            href={href}
             className={baseClass}
+            aria-current={isCurrentPage ? 'page' : undefined}
             aria-pressed={isActive}
             aria-label={LOCALE_LABELS[l]}
+            onClick={() => setLocale(l)}
           >
             {variant === 'full' ? LOCALE_LABELS[l] : l.toUpperCase()}
-          </button>
+          </Link>
         );
       })}
     </div>

@@ -1,5 +1,9 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { useLocale } from '@/hooks/use-locale';
+import { getLocalizedPath, type Locale } from '@/lib/i18n/config';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
 
@@ -13,24 +17,33 @@ type BreadcrumbProps = {
   items: BreadcrumbItem[];
   /** Full URL of current page for JSON-LD. Omit to skip schema output */
   currentPageUrl?: string;
+  /** Locale: vi = no prefix, en = /en prefix */
+  locale?: string;
   className?: string;
 };
 
+function buildHref(href: string, locale?: string): string {
+  if (!locale) return href;
+  return getLocalizedPath(locale as Locale, href);
+}
+
 function buildBreadcrumbJsonLd(
   items: BreadcrumbItem[],
-  currentPageUrl: string
+  currentPageUrl: string,
+  locale?: string
 ): object {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: items.map((item, index) => {
       const isLast = index === items.length - 1;
+      const path = item.href ? buildHref(item.href, locale) : null;
       const url =
         isLast && !item.href
           ? currentPageUrl
-          : item.href === '/'
-            ? BASE_URL
-            : `${BASE_URL}${item.href?.startsWith('/') ? '' : '/'}${item.href ?? ''}`;
+          : path
+            ? `${BASE_URL}${path === '/' ? '' : path}`
+            : BASE_URL;
       return {
         '@type': 'ListItem',
         position: index + 1,
@@ -41,8 +54,15 @@ function buildBreadcrumbJsonLd(
   };
 }
 
-export function Breadcrumb({ items, currentPageUrl, className = 'mb-8' }: BreadcrumbProps) {
-  const jsonLd = currentPageUrl ? buildBreadcrumbJsonLd(items, currentPageUrl) : null;
+export function Breadcrumb({
+  items,
+  currentPageUrl,
+  locale: localeProp,
+  className = 'mb-8',
+}: BreadcrumbProps) {
+  const localeFromContext = useLocale();
+  const locale = localeProp ?? localeFromContext;
+  const jsonLd = currentPageUrl ? buildBreadcrumbJsonLd(items, currentPageUrl, locale) : null;
 
   return (
     <>
@@ -59,7 +79,7 @@ export function Breadcrumb({ items, currentPageUrl, className = 'mb-8' }: Breadc
               <li>
                 {item.href !== undefined ? (
                   <Link
-                    href={item.href}
+                    href={buildHref(item.href, locale)}
                     className="hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors"
                   >
                     {item.label}

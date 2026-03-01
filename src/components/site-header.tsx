@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { useTheme } from '@/contexts/theme-context';
+import { useLocale } from '@/hooks/use-locale';
+import { getLocalizedPath } from '@/lib/i18n/config';
 import { LanguageSwitcher } from './language-switcher';
 
 function getSiteDisplayName(): string {
@@ -10,13 +12,9 @@ function getSiteDisplayName(): string {
   return hostname.replace(/^www\./, '') || hostname;
 }
 
-type SiteHeaderProps = {
-  /** For C1: use Link for vi/en SEO */
-  alternateUrls?: { vi: string; en: string };
-};
-
-export function SiteHeader({ alternateUrls }: SiteHeaderProps = {}) {
+export function SiteHeader() {
   const { theme } = useTheme();
+  const locale = useLocale();
   const siteDisplayName = getSiteDisplayName();
 
   return (
@@ -27,7 +25,7 @@ export function SiteHeader({ alternateUrls }: SiteHeaderProps = {}) {
       <div className="max-w-6xl mx-auto px-4 py-3 md:px-6 flex items-center justify-between gap-4">
         <span className="vanthdev-btn-wrap inline-block shrink-0">
           <Link
-            href="/"
+            href={getLocalizedPath(locale, '/')}
             className="vanthdev-btn-inner inline-flex cursor-pointer items-center gap-1.5 px-3 py-1.5 font-semibold text-sm no-underline text-[#1a1a1a] hover:text-[#c41e3a] transition-colors dark:text-white/95 dark:hover:text-amber-400"
           >
             <img src="/vanthdev-logo.svg" alt="" width={28} height={28} className="shrink-0" />
@@ -38,7 +36,6 @@ export function SiteHeader({ alternateUrls }: SiteHeaderProps = {}) {
           variant="full"
           theme={theme}
           showThemeToggle
-          alternateUrls={alternateUrls}
         />
       </div>
     </header>
