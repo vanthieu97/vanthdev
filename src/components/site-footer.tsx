@@ -30,12 +30,6 @@ export function SiteFooter() {
       <div className="max-w-6xl mx-auto px-4 py-12 pb-6 md:px-6">
         <div className="flex flex-col items-center gap-4">
           <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="/champions-league"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] text-[#1a1a1a] font-medium text-sm no-underline hover:border-[#1a237e]/30 hover:text-[#1a237e] transition-all duration-300 dark:bg-white/5 dark:border-white/10 dark:text-white/90 dark:hover:border-amber-400/50 dark:hover:text-amber-400"
-            >
-              ⚽ C1 Champions League
-            </Link>
             <span className="vanthdev-btn-wrap inline-block">
               <Link
                 href="/"

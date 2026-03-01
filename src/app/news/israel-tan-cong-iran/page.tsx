@@ -14,9 +14,9 @@ const TEHRAN_IMAGE =
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'Israel tấn công Iran - Mỹ và Israel không kích Iran 28/2/2026',
+  title: 'Israel tấn công Iran - Khamenei thiệt mạng, Mỹ Israel không kích Iran 2026',
   description:
-    'Mỹ và Israel tấn công Iran ngày 28/2/2026: đánh phủ đầu tên lửa đạn đạo, mục tiêu Tehran, Isfahan, Qom. Iran đáp trả phóng tên lửa về Israel. Trump: chiến dịch quy mô lớn đang diễn ra.',
+    'Cập nhật 1/3/2026: Lãnh tụ tối cao Iran Khamenei thiệt mạng trong cuộc không kích Mỹ-Israel. Iran đáp trả tên lửa vào Israel và các căn cứ Mỹ. Israel tiếp tục đợt tấn công mới nhắm hệ thống phòng không Iran.',
   keywords: [
     'Israel tấn công Iran',
     'Iran',
@@ -26,6 +26,13 @@ export const metadata: Metadata = {
     'Israel đánh Iran',
     'Israel tấn công phủ đầu Iran',
     'Mỹ tấn công Iran',
+    'Khamenei thiệt mạng',
+    'Khamenei chết',
+    'lãnh tụ tối cao Iran',
+    'Iran đáp trả',
+    'chiến tranh Iran Israel',
+    'Trung Đông',
+    'Trump Iran',
   ],
   openGraph: {
     title: 'Israel tấn công Iran - Mỹ và Israel không kích Iran 28/2/2026',
@@ -61,7 +68,7 @@ const newsArticleJsonLd = {
   url: pageUrl,
   image: OG_IMAGE,
   datePublished: '2026-02-28',
-  dateModified: '2026-02-28',
+  dateModified: '2026-03-01',
   author: { '@type': 'Organization', name: 'vanthdev.com' },
   publisher: { '@type': 'Organization', name: 'vanthdev.com', url: baseUrl },
   mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
@@ -202,8 +209,39 @@ export default function IsraelTanCongIranPage() {
             quân tại khu vực.
           </p>
 
+          <h2 className="text-xl font-semibold mt-10 mb-4 text-[#1a1a1a] dark:text-white/95">
+            Cập nhật 1/3/2026: Khamenei thiệt mạng
+          </h2>
+          <p>
+            <strong>Lãnh tụ tối cao Iran Ayatollah Ali Khamenei</strong> (86 tuổi) đã <strong>thiệt mạng</strong> trong
+            cuộc không kích Mỹ-Israel vào văn phòng của ông tại Tehran ngày thứ Bảy. Truyền thông nhà nước Iran xác nhận
+            cái chết vào sáng Chủ nhật. Các thành viên gia đình bao gồm con gái, cháu, con dâu và con rể cũng thiệt
+            mạng.
+          </p>
+
+          <h2 className="text-xl font-semibold mt-10 mb-4 text-[#1a1a1a] dark:text-white/95">
+            Israel mở đợt tấn công mới
+          </h2>
+          <p>
+            Sáng Chủ nhật 1/3, <strong>Israel</strong> mở đợt không kích mới nhắm vào hệ thống <strong>tên lửa đạn
+            đạo và phòng không</strong> của <strong>Iran</strong>, đánh trúng khoảng <strong>30 mục tiêu</strong> bao gồm
+            bệ phóng tên lửa và sở chỉ huy. <strong>Iran</strong> đáp trả bằng hàng trăm tên lửa và drone nhắm vào lính
+            Mỹ và các thành phố Israel, một phụ nữ thiệt mạng tại Tel Aviv.
+          </p>
+
+          <h2 className="text-xl font-semibold mt-10 mb-4 text-[#1a1a1a] dark:text-white/95">
+            Tác động khu vực và khoảng trống quyền lực
+          </h2>
+          <p>
+            Thương vong dân sự xảy ra tại UAE — một người thiệt mạng, nhiều người bị thương tại Dubai và Abu Dhabi. Các
+            chuyến bay bị hủy trên khắp Trung Đông. Vệ binh Cách mạng <strong>Iran</strong> đe dọa &quot;chiến dịch tấn
+            công lớn nhất từ trước đến nay&quot; nhắm vào căn cứ Mỹ và <strong>Israel</strong>. Iran thành lập hội đồng
+            lãnh đạo tạm thời để xử lý khủng hoảng chính trị sau cái chết của <strong>Khamenei</strong>. Tổng thư ký
+            Liên Hợp Quốc kêu gọi ngừng bắn ngay lập tức.
+          </p>
+
           <p className="mt-10 text-[#6b6b6b] dark:text-slate-400 text-sm">
-            Nguồn tham khảo: CNN, BBC, CBS News, AP
+            Nguồn tham khảo: Reuters, CNN, BBC, CBS News, AP, NBC News, Haaretz, Times of Israel
           </p>
         </div>
 
