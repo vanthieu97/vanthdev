@@ -1,0 +1,47 @@
+---
+description: SEO trending keyword research - Require Google Trends lookup before writing SEO metadata
+alwaysApply: false
+globs: src/app/**/page.tsx
+---
+
+# SEO Trending Research
+
+When creating or updating a page that requires SEO, **always** research trending keywords before writing metadata.
+
+## Process
+
+1. **Check Google Trends** — Find trending keywords related to the page topic:
+   - Use `https://trends.google.com.vn/trending?geo=VN` for Vietnam trends
+   - Search: `"{topic}" trending keywords Vietnam` or related queries
+   - Identify real search variations: long-tail, questions, comparisons
+
+2. **Add trending keywords to metadata** — Integrate findings into:
+   - `keywords[]` in page metadata
+   - `description` (prioritize high-volume terms)
+   - `alternateName` in JSON-LD structured data
+   - `sr-only` on-page text
+   - FAQ section (use questions people actually search for)
+
+3. **Prioritize by search intent**:
+   - **Informational**: "giá vàng hôm nay", "gold price today"
+   - **Comparison**: "vàng miếng hay vàng nhẫn", "SJC vs DOJI"
+   - **Transactional**: "mua vàng ở đâu", "how to buy gold"
+   - **Forecast**: "dự báo giá vàng tuần tới", "gold price prediction"
+
+## Example
+
+```tsx
+// ❌ Made-up keywords only
+keywords: ['gold price', 'SJC gold']
+
+// ✅ Trending keywords from actual search data
+keywords: [
+  'giá vàng hôm nay',        // highest volume
+  'giá vàng SJC',             // specific brand
+  'giá vàng 9999',            // popular type
+  'giá vàng 24k',             // variation
+  'nên mua vàng lúc nào',     // transactional intent
+  'dự báo giá vàng tuần tới', // forecast intent
+  'mua vàng ở đâu',           // location intent
+]
+```

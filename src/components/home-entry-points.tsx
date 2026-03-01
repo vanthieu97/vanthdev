@@ -32,6 +32,12 @@ const ENTRY_POINTS: Record<
       title: 'Review phim',
       desc: 'Đánh giá phim điện ảnh Việt Nam',
     },
+    {
+      href: '/gia-vang',
+      icon: '🥇',
+      title: 'Giá vàng',
+      desc: 'Giá vàng SJC, DOJI, PNJ hôm nay',
+    },
   ],
   en: [
     {
@@ -57,6 +63,12 @@ const ENTRY_POINTS: Record<
       icon: '🎬',
       title: 'Film Review',
       desc: 'Vietnamese film reviews and ratings',
+    },
+    {
+      href: '/gia-vang',
+      icon: '🥇',
+      title: 'Gold Price',
+      desc: 'Live gold prices SJC, DOJI, PNJ',
     },
   ],
 };
