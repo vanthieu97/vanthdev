@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocaleContext, type Locale } from '@/contexts/locale-context';
 import { ThemeToggle } from './theme-toggle';
@@ -76,18 +75,25 @@ export function LanguageSwitcher({
         const href = useLinks && alternateUrls ? alternateUrls[l] : getLocalizedPath(pathname, l);
         const isCurrentPage = pathname === href;
 
+        const handleClick = (e: React.MouseEvent) => {
+          e.preventDefault();
+          if (isCurrentPage) return;
+          setLocale(l);
+          window.location.href = href;
+        };
+
         return (
-          <Link
+          <a
             key={l}
             href={href}
             className={baseClass}
             aria-current={isCurrentPage ? 'page' : undefined}
             aria-pressed={isActive}
             aria-label={LOCALE_LABELS[l]}
-            onClick={() => setLocale(l)}
+            onClick={handleClick}
           >
             {variant === 'full' ? LOCALE_LABELS[l] : l.toUpperCase()}
-          </Link>
+          </a>
         );
       })}
     </div>
