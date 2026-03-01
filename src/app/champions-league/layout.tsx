@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Breadcrumb } from '@/components/breadcrumb';
 
 export const dynamic = 'force-static';
 
@@ -115,6 +116,11 @@ const jsonLd = {
   ],
 };
 
+const BREADCRUMB_ITEMS = [
+  { href: '/', label: 'Trang chủ' },
+  { label: 'Cúp C1 2025/2026' },
+];
+
 export default function ChampionsLeagueLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -122,6 +128,9 @@ export default function ChampionsLeagueLayout({ children }: { children: React.Re
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <div className="max-w-6xl mx-auto px-4 pt-6 md:px-6 md:pt-8">
+        <Breadcrumb items={BREADCRUMB_ITEMS} currentPageUrl={pageUrl} />
+      </div>
       {children}
     </>
   );

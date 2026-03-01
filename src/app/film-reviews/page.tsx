@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Breadcrumb } from '@/components/breadcrumb';
 import { FilmPoster } from '@/components/film-poster';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
@@ -75,14 +76,10 @@ export const metadata: Metadata = {
   },
 };
 
-const breadcrumbJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: baseUrl },
-    { '@type': 'ListItem', position: 2, name: 'Review phim', item: pageUrl },
-  ],
-};
+const BREADCRUMB_ITEMS = [
+  { href: '/', label: 'Trang chủ' },
+  { label: 'Review phim' },
+];
 
 const itemListJsonLd = {
   '@context': 'https://schema.org',
@@ -110,27 +107,10 @@ export default function FilmReviewsPage() {
     <div className="bg-[#faf8f5] dark:bg-[#0a0f1a]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
       <div className="max-w-6xl mx-auto px-4 py-8 md:px-6 md:py-12">
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex flex-wrap items-center gap-2 text-sm text-[#6b6b6b] dark:text-slate-400">
-            <li>
-              <Link
-                href="/"
-                className="hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors"
-              >
-                Trang chủ
-              </Link>
-            </li>
-            <li aria-hidden>/</li>
-            <li className="text-[#1a1a1a] dark:text-white/95">Review phim</li>
-          </ol>
-        </nav>
+        <Breadcrumb items={BREADCRUMB_ITEMS} currentPageUrl={pageUrl} />
 
         <header className="mb-10">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c41e3a]/10 dark:bg-[#c41e3a]/20 text-[#c41e3a] dark:text-amber-400 text-sm font-semibold mb-4">

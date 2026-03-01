@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Breadcrumb } from '@/components/breadcrumb';
 import { getGoldPriceData } from '@/lib/gold-price';
 import { GoldPriceClient } from './gold-price-client';
 
@@ -70,14 +70,10 @@ export const metadata: Metadata = {
   },
 };
 
-const breadcrumbJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: baseUrl },
-    { '@type': 'ListItem', position: 2, name: 'Giá vàng hôm nay', item: pageUrl },
-  ],
-};
+const BREADCRUMB_ITEMS = [
+  { href: '/', label: 'Trang chủ' },
+  { label: 'Giá vàng hôm nay' },
+];
 
 const faqJsonLd = {
   '@context': 'https://schema.org',
@@ -175,10 +171,6 @@ export default async function GoldPricePage() {
     <div className="bg-[#faf8f5] dark:bg-[#0a0f1a]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <script
@@ -187,20 +179,7 @@ export default async function GoldPricePage() {
       />
 
       <div className="max-w-6xl mx-auto px-4 py-8 md:px-6 md:py-12">
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex flex-wrap items-center gap-2 text-sm text-[#6b6b6b] dark:text-slate-400">
-            <li>
-              <Link
-                href="/"
-                className="hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors"
-              >
-                Trang chủ
-              </Link>
-            </li>
-            <li aria-hidden>/</li>
-            <li className="text-[#1a1a1a] dark:text-white/95">Giá vàng hôm nay</li>
-          </ol>
-        </nav>
+        <Breadcrumb items={BREADCRUMB_ITEMS} currentPageUrl={pageUrl} />
 
         <GoldPriceClient initialData={data} />
       </div>

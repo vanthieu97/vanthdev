@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Breadcrumb } from '@/components/breadcrumb';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
 const pageUrl = `${baseUrl}/news/israel-tan-cong-iran`;
@@ -74,15 +74,11 @@ const newsArticleJsonLd = {
   mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
 };
 
-const breadcrumbJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: baseUrl },
-    { '@type': 'ListItem', position: 2, name: 'Tin tức', item: `${baseUrl}/news` },
-    { '@type': 'ListItem', position: 3, name: 'Israel tấn công Iran', item: pageUrl },
-  ],
-};
+const BREADCRUMB_ITEMS = [
+  { href: '/', label: 'Trang chủ' },
+  { href: '/news', label: 'Tin tức' },
+  { label: 'Israel tấn công Iran' },
+];
 
 export default function IsraelTanCongIranPage() {
   return (
@@ -91,28 +87,8 @@ export default function IsraelTanCongIranPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(newsArticleJsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
       <article className="max-w-6xl mx-auto px-4 py-8 md:px-6 md:py-12">
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex flex-wrap items-center gap-2 text-sm text-[#6b6b6b] dark:text-slate-400">
-            <li>
-              <Link href="/" className="hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors">
-                Trang chủ
-              </Link>
-            </li>
-            <li aria-hidden>/</li>
-            <li>
-              <Link href="/news" className="hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors">
-                Tin tức
-              </Link>
-            </li>
-            <li aria-hidden>/</li>
-            <li className="text-[#1a1a1a] dark:text-white/95">Israel tấn công Iran</li>
-          </ol>
-        </nav>
+        <Breadcrumb items={BREADCRUMB_ITEMS} currentPageUrl={pageUrl} />
 
         <header className="mb-10">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c41e3a]/10 dark:bg-[#c41e3a]/20 text-[#c41e3a] dark:text-amber-400 text-sm font-semibold mb-4">

@@ -51,6 +51,7 @@ type NewsArticle = {
 type Props = {
   initialArticles: NewsArticle[];
   initialNextPage: string | null;
+  embedded?: boolean;
 };
 
 function ArticleCard({ article }: { article: NewsArticle }) {
@@ -107,7 +108,11 @@ function ArticleCard({ article }: { article: NewsArticle }) {
   );
 }
 
-export default function NewsList({ initialArticles, initialNextPage }: Props) {
+export default function NewsList({
+  initialArticles,
+  initialNextPage,
+  embedded = false,
+}: Props) {
   const [articles, setArticles] = useState<NewsArticle[]>(initialArticles);
   const [nextPage, setNextPage] = useState<string | null>(initialNextPage);
   const [loading, setLoading] = useState(false);
@@ -145,13 +150,23 @@ export default function NewsList({ initialArticles, initialNextPage }: Props) {
 
   return (
     <>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div
+        className={
+          embedded
+            ? 'grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5'
+            : 'grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8'
+        }
+      >
         {articles.map((article) => (
           <ArticleCard key={article.article_id} article={article} />
         ))}
       </div>
       {nextPage && (
-        <div className="py-8 flex flex-col items-center justify-center gap-2">
+        <div
+          className={`flex flex-col items-center justify-center gap-2 ${
+            embedded ? 'py-5' : 'py-8'
+          }`}
+        >
           {error && <p className="text-red-600 dark:text-red-400 text-sm">{error}</p>}
           {loading ? (
             <p className="text-[#8a8a8a] dark:text-slate-500 text-sm">Đang tải thêm...</p>

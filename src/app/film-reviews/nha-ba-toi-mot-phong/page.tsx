@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Breadcrumb } from '@/components/breadcrumb';
 import { FilmPoster } from '@/components/film-poster';
 import { FilmYoutubeReviews } from '@/components/film-youtube-reviews';
 
@@ -69,32 +69,19 @@ const reviewJsonLd = {
   publisher: { '@type': 'Organization', name: 'vanthdev.com', url: baseUrl },
 };
 
-const breadcrumbJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: baseUrl },
-    { '@type': 'ListItem', position: 2, name: 'Review phim', item: `${baseUrl}/film-reviews` },
-    { '@type': 'ListItem', position: 3, name: 'Nhà ba tôi một phòng', item: pageUrl },
-  ],
-};
+const BREADCRUMB_ITEMS = [
+  { href: '/', label: 'Trang chủ' },
+  { href: '/film-reviews', label: 'Review phim' },
+  { label: 'Nhà ba tôi một phòng' },
+];
 
 export default function NhaBaToiMotPhongPage() {
   return (
     <div className="bg-[#faf8f5] dark:bg-[#0a0f1a]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <article className="max-w-6xl mx-auto px-4 py-8 md:px-6 md:py-12">
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex flex-wrap items-center gap-2 text-sm text-[#6b6b6b] dark:text-slate-400">
-            <li><Link href="/" className="hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors">Trang chủ</Link></li>
-            <li aria-hidden>/</li>
-            <li><Link href="/film-reviews" className="hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors">Review phim</Link></li>
-            <li aria-hidden>/</li>
-            <li className="text-[#1a1a1a] dark:text-white/95">Nhà ba tôi một phòng</li>
-          </ol>
-        </nav>
+        <Breadcrumb items={BREADCRUMB_ITEMS} currentPageUrl={pageUrl} />
 
         <header className="mb-10">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c41e3a]/10 dark:bg-[#c41e3a]/20 text-[#c41e3a] dark:text-amber-400 text-sm font-semibold mb-4">🎬 Review phim</span>

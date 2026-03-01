@@ -27,8 +27,8 @@ export function SiteFooter() {
 
   return (
     <footer className="relative z-20 border-t border-[#e8e6e3] dark:border-white/10 bg-[#faf8f5] dark:bg-[#0a0f1a]">
-      <div className="max-w-6xl mx-auto px-4 py-12 pb-6 md:px-6">
-        <div className="flex flex-col items-center gap-4">
+      <div className="max-w-6xl mx-auto px-4 py-8 pb-4 md:px-6 md:py-8 md:pb-5">
+        <div className="flex flex-col items-center gap-2">
           <div className="flex flex-wrap justify-center gap-3">
             <span className="vanthdev-btn-wrap inline-block">
               <Link
@@ -44,11 +44,11 @@ export function SiteFooter() {
             Tin tức được cập nhật liên tục
           </p>
           {showPushSection && (
-            <details className="group mt-4 w-full max-w-sm rounded-xl border border-[#e8e6e3] bg-white/50 p-4 dark:border-white/10 dark:bg-white/5">
+            <details className="group mt-2 w-full max-w-sm rounded-xl border border-[#e8e6e3] bg-white/50 p-4 dark:border-white/10 dark:bg-white/5">
               <summary className="cursor-pointer list-none text-sm font-medium text-[#1a1a1a] dark:text-white/90">
                 🔔 Thông báo đẩy
               </summary>
-              <div className="mt-3">
+              <div className="mt-2">
                 <PwaPushManager />
               </div>
             </details>
