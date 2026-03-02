@@ -1,4 +1,5 @@
 /* Lunar New Year Countdown – theme and styles scoped to .lunar-page only */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+KR:wght@400;600;700&family=Noto+Sans+Thai:wght@400;600;700&display=swap');
 
 .lunar-page {
   --bg-dark: #ffffff;

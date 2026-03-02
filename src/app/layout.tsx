@@ -4,8 +4,9 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { ThemeProvider } from '@/contexts/theme-context';
-import { ThemeInitScript } from '@/components/theme-init-script';
+import { ServiceWorkerRegister } from '@/components/service-worker-register';
 import { isValidLocale } from '@/lib/i18n/config';
+import { beVietnamPro } from '@/lib/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -22,11 +23,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const headersList = await headers();
   const localeHeader = headersList.get('x-locale');
   const lang = localeHeader && isValidLocale(localeHeader) ? localeHeader : 'vi';
+  const themeScript = `(function(){try{var m=document.cookie.match(/(?:^|; )theme=([^;]*)/);var t=m?decodeURIComponent(m[1]):null;var dark=t==='light'?false:t==='dark'?true:window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.classList.add(dark?'dark':'light')}catch(e){document.documentElement.classList.add('dark')}})();`;
+
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html lang={lang} className={`${beVietnamPro.variable} ${beVietnamPro.className}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
-        <ThemeInitScript />
         <ThemeProvider>
+          <ServiceWorkerRegister />
           {children}
           {gaId && <GoogleAnalytics gaId={gaId} />}
           <Analytics />

@@ -1,8 +1,5 @@
-'use client';
-
 import Link from 'next/link';
-import { useLocale, type Locale } from '@/hooks/use-locale';
-import { getLocalizedPath } from '@/lib/i18n/config';
+import { getLocalizedPath, type Locale } from '@/lib/i18n/config';
 
 const ENTRY_POINTS: Record<
   Locale,
@@ -55,8 +52,9 @@ const SECTION_LABELS: Record<Locale, string> = {
   en: 'Explore',
 };
 
-export function HomeEntryPoints() {
-  const locale = useLocale();
+type Props = { locale: Locale };
+
+export function HomeEntryPoints({ locale }: Props) {
   const points = ENTRY_POINTS[locale] ?? ENTRY_POINTS.en;
   const sectionLabel = SECTION_LABELS[locale] ?? SECTION_LABELS.en;
 

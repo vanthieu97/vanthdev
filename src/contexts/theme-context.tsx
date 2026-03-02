@@ -41,6 +41,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const root = document.documentElement;
+    if (root.classList.contains(theme)) return;
     root.classList.remove('light', 'dark');
     root.classList.add(theme);
   }, [theme]);

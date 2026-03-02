@@ -87,7 +87,7 @@ export default function Home({ params }: { params: { locale: string } }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
       />
       <div className="max-w-6xl mx-auto px-4 pt-6 pb-0 md:px-6 md:pt-8">
-        <HomeEntryPoints />
+        <HomeEntryPoints locale={locale} />
       </div>
       <VietnamNewsContent embedded locale={locale} />
     </div>
