@@ -22,7 +22,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const headersList = await headers();
   const localeHeader = headersList.get('x-locale');
   const lang = localeHeader && isValidLocale(localeHeader) ? localeHeader : 'vi';
-
   return (
     <html lang={lang} suppressHydrationWarning>
       <body>
