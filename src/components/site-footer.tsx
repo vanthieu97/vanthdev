@@ -33,7 +33,33 @@ export function SiteFooter() {
   return (
     <footer className="relative z-20 border-t border-[#e8e6e3] dark:border-white/10 bg-[#faf8f5] dark:bg-[#0a0f1a]">
       <div className="max-w-6xl mx-auto px-4 py-8 pb-4 md:px-6 md:py-8 md:pb-5">
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-4">
+          <nav aria-label="Quick links" className="flex flex-wrap justify-center gap-x-6 gap-y-1">
+            <Link
+              href={getLocalizedPath(locale, '/news')}
+              className="text-sm text-[#6b6b6b] dark:text-slate-400 hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors"
+            >
+              {t.news}
+            </Link>
+            <Link
+              href={getLocalizedPath(locale, '/champions-league')}
+              className="text-sm text-[#6b6b6b] dark:text-slate-400 hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors"
+            >
+              {t.championsLeague}
+            </Link>
+            <Link
+              href={getLocalizedPath(locale, '/film-reviews')}
+              className="text-sm text-[#6b6b6b] dark:text-slate-400 hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors"
+            >
+              {t.filmReviews}
+            </Link>
+            <Link
+              href={getLocalizedPath(locale, '/gia-vang')}
+              className="text-sm text-[#6b6b6b] dark:text-slate-400 hover:text-[#c41e3a] dark:hover:text-amber-400 transition-colors"
+            >
+              {t.goldPrice}
+            </Link>
+          </nav>
           <div className="flex flex-wrap justify-center gap-3">
             <span className="vanthdev-btn-wrap inline-block">
               <Link

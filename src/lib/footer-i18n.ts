@@ -8,15 +8,27 @@ export const FOOTER_TRANSLATIONS: Record<
   {
     newsUpdated: string;
     pushNotifications: string;
+    news: string;
+    championsLeague: string;
+    filmReviews: string;
+    goldPrice: string;
   }
 > = {
   vi: {
     newsUpdated: 'Tin tức được cập nhật liên tục',
     pushNotifications: 'Thông báo đẩy',
+    news: 'Tin tức',
+    championsLeague: 'Cúp C1',
+    filmReviews: 'Review phim',
+    goldPrice: 'Giá vàng',
   },
   en: {
     newsUpdated: 'News updated continuously',
     pushNotifications: 'Push notifications',
+    news: 'News',
+    championsLeague: 'Champions League',
+    filmReviews: 'Film Review',
+    goldPrice: 'Gold Price',
   },
 };
 

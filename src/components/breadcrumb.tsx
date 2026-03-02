@@ -88,7 +88,11 @@ export function Breadcrumb({
                   <span className="text-[#1a1a1a] dark:text-white/95">{item.label}</span>
                 )}
               </li>
-              {index < items.length - 1 && <li aria-hidden>/</li>}
+              {index < items.length - 1 && (
+                  <li aria-hidden className="text-[#b0b0b0] dark:text-slate-500">
+                    ›
+                  </li>
+                )}
             </React.Fragment>
           ))}
         </ol>

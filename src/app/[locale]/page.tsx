@@ -50,7 +50,6 @@ export async function generateMetadata({
       siteName: 'vanthdev.com',
       type: 'website',
       locale: locale === 'vi' ? 'vi_VN' : 'en_US',
-      images: [{ url: '/og-news.png', width: 1200, height: 630, alt: 'Tin tức tổng hợp' }],
     },
     twitter: {
       card: 'summary_large_image',

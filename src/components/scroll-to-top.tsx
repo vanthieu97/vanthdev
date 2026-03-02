@@ -1,10 +1,18 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useLocale } from '@/hooks/use-locale';
 
 const SCROLL_THRESHOLD = 400;
 
+const LABELS: Record<string, string> = {
+  vi: 'Cuộn lên đầu trang',
+  en: 'Scroll to top',
+};
+
 export function ScrollToTop() {
+  const locale = useLocale();
+  const ariaLabel = LABELS[locale === 'en' ? 'en' : 'vi'];
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -23,9 +31,9 @@ export function ScrollToTop() {
       type="button"
       onClick={scrollToTop}
       style={{ opacity: visible ? 1 : 0, pointerEvents: visible ? 'auto' : 'none' }}
-      className="fixed bottom-6 right-6 z-50 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/90 shadow-[0_2px_12px_rgba(0,0,0,0.12)] transition-opacity duration-300 hover:bg-white dark:bg-white/10 dark:shadow-[0_2px_12px_rgba(0,0,0,0.4)] dark:hover:bg-white/20"
-      aria-label="Scroll to top"
-      title="Scroll to top"
+      className="fixed bottom-6 right-6 z-50 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/90 shadow-[0_2px_12px_rgba(0,0,0,0.12)] transition-opacity duration-300 hover:bg-white dark:bg-white/10 dark:shadow-[0_2px_12px_rgba(0,0,0,0.4)] dark:hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-[#c41e3a] focus:ring-offset-2"
+      aria-label={ariaLabel}
+      title={ariaLabel}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

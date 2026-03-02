@@ -60,6 +60,7 @@ function buildNewsArticleJsonLd(locale: Locale, isEn: boolean) {
     author: { '@type': 'Organization', name: 'vanthdev.com' },
     publisher: { '@type': 'Organization', name: 'vanthdev.com', url: baseUrl },
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+  image: `${baseUrl}/vanthdev-logo.svg`,
   };
 }
 

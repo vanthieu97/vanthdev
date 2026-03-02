@@ -92,7 +92,7 @@ export default async function VietnamNewsContent(props: { embedded?: boolean; lo
       <div
         className={
           embedded
-            ? 'pt-4 md:pt-6 pb-8 md:pb-12'
+            ? 'pt-6 md:pt-8 pb-8 md:pb-12 border-t border-[#eee] dark:border-white/5'
             : 'pt-8 md:pt-12 pb-12 md:pb-16'
         }
       >
@@ -114,7 +114,7 @@ export default async function VietnamNewsContent(props: { embedded?: boolean; lo
           <div className="max-w-6xl mx-auto px-4 md:px-6">
             <div className={embedded ? 'mb-6 md:mb-8' : 'mb-10 md:mb-12'}>
               <div
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c41e3a] text-white text-sm font-semibold ${embedded ? 'mb-3' : 'mb-4'}`}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c41e3a] text-white text-sm font-semibold shadow-[0_2px_8px_rgba(196,30,58,0.35)] dark:shadow-[0_2px_8px_rgba(251,191,36,0.2)] ${embedded ? 'mb-3' : 'mb-4'}`}
               >
                 <span>📅</span>
                 <span>{t.today} — {getTodayFormatted(localeSafe)}</span>

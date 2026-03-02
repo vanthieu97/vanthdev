@@ -88,7 +88,7 @@ function ArticleCard({
             unoptimized
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#e0ddda] to-[#d4d1cd] dark:from-[#2a2a3d] dark:to-[#1e1e2e] flex items-center justify-center">
+          <div className="w-full h-full bg-linear-to-br from-[#e0ddda] to-[#d4d1cd] dark:from-[#2a2a3d] dark:to-[#1e1e2e] flex items-center justify-center">
             <span className="text-[#999] dark:text-slate-500 text-4xl">📰</span>
           </div>
         )}
@@ -195,7 +195,7 @@ export default function NewsList({
             <button
               type="button"
               onClick={handleLoadMore}
-              className="cursor-pointer px-4 py-2 text-sm font-medium text-[#c41e3a] dark:text-amber-400 border border-[#c41e3a] dark:border-amber-400/50 rounded-lg hover:bg-[#fff0f2] dark:hover:bg-amber-400/10 transition-colors disabled:opacity-50"
+              className="cursor-pointer px-5 py-2.5 text-sm font-medium text-[#c41e3a] dark:text-amber-400 border border-[#c41e3a] dark:border-amber-400/50 rounded-xl hover:bg-[#fff0f2] dark:hover:bg-amber-400/10 transition-all duration-200 disabled:opacity-50"
             >
               {t.loadMore}
             </button>

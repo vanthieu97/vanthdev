@@ -3,6 +3,7 @@ import { LocaleProvider } from '@/contexts/locale-context';
 import { ConditionalSiteHeader } from '@/components/conditional-site-header';
 import { ConditionalSiteFooter } from '@/components/conditional-site-footer';
 import { ScrollToTop } from '@/components/scroll-to-top';
+import { SkipToContent } from '@/components/skip-to-content';
 import { PwaInstallPrompt } from '@/components/pwa-install-prompt';
 import { isValidLocale, type Locale } from '@/lib/i18n/config';
 
@@ -17,9 +18,10 @@ export default function LocaleLayout({ children, params }: Props) {
 
   return (
     <LocaleProvider initialLocale={locale}>
-      <div className="flex min-h-screen flex-col">
+      <div className="relative flex min-h-screen flex-col">
+        <SkipToContent locale={locale} />
         <ConditionalSiteHeader />
-        <main className="flex flex-1 flex-col">
+        <main id="main-content" className="flex flex-1 flex-col">
           <div className="flex-1 flex flex-col min-h-0 bg-[#faf8f5] dark:bg-[#0a0f1a]">
             {children}
           </div>

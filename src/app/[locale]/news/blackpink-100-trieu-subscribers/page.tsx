@@ -92,6 +92,7 @@ function buildNewsArticleJsonLd(locale: Locale) {
   author: { '@type': 'Organization', name: 'vanthdev.com' },
   publisher: { '@type': 'Organization', name: 'vanthdev.com', url: baseUrl },
   mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+  image: `${baseUrl}/vanthdev-logo.svg`,
   keywords: 'BLACKPINK, 100 triệu subscribers, YouTube, DEADLINE, K-pop, Red Diamond Creator Award, BLINK',
   about: {
     '@type': 'MusicGroup',
