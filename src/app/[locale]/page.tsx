@@ -1,9 +1,31 @@
 import type { Metadata } from 'next';
-import { VietnamNewsContent } from './news/vietnam-news-content';
+import nextDynamic from 'next/dynamic';
 import { HomeEntryPoints } from '@/components/home-entry-points';
 import { getCanonicalUrl, LOCALES, isValidLocale, type Locale } from '@/lib/i18n/config';
 
+const VietnamNewsContent = nextDynamic(
+  () => import('./news/vietnam-news-content').then((mod) => ({ default: mod.VietnamNewsContent })),
+  {
+    loading: () => (
+      <div className="pt-4 md:pt-6 pb-8 md:pb-12">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <div className="animate-pulse space-y-4">
+            <div className="h-8 w-48 bg-[#e8e6e3] dark:bg-white/10 rounded" />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="h-32 bg-[#e8e6e3] dark:bg-white/10 rounded-xl" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  }
+);
+
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
+
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,

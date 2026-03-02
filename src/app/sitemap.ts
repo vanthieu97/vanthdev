@@ -20,6 +20,7 @@ const ROUTES: Array<{ path: string; changeFrequency: 'daily' | 'weekly' | 'month
   { path: '/news/luat-ai-viet-nam-2026', changeFrequency: 'weekly', priority: 0.9 },
   { path: '/news/iphone-18-pro-max', changeFrequency: 'weekly', priority: 0.85 },
   { path: '/news/blackpink-100-trieu-subscribers', changeFrequency: 'weekly', priority: 0.85 },
+  { path: '/news/vang-iran-chien-tranh-2026', changeFrequency: 'weekly', priority: 0.85 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
