@@ -21,6 +21,10 @@ const ROUTES: Array<{ path: string; changeFrequency: 'daily' | 'weekly' | 'month
   { path: '/news/iphone-18-pro-max', changeFrequency: 'weekly', priority: 0.85 },
   { path: '/news/blackpink-100-trieu-subscribers', changeFrequency: 'weekly', priority: 0.85 },
   { path: '/news/vang-iran-chien-tranh-2026', changeFrequency: 'weekly', priority: 0.85 },
+  { path: '/news/c1-vong-1-8-2026', changeFrequency: 'weekly', priority: 0.85 },
+  { path: '/news/du-bao-gia-vang-2026', changeFrequency: 'weekly', priority: 0.85 },
+  { path: '/news/phim-tai-quy-nhap-trang-2-thang-3-2026', changeFrequency: 'weekly', priority: 0.85 },
+  { path: '/news/lich-tet-2026', changeFrequency: 'monthly', priority: 0.85 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

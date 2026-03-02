@@ -23,13 +23,16 @@ export async function generateMetadata({
   }
   languages['x-default'] = getPageUrl('vi');
 
+  const isEn = locale === 'en';
   return {
-    title: 'Lunar New Year Countdown 2026 – Chinese New Year & Tet Countdown Timer',
-    description:
-      'Live countdown to Lunar New Year 2026 with timezone support. Track Chinese New Year, Tet holiday, and Spring Festival countdown instantly.',
+    title: isEn ? 'Tet 2026 - Lunar New Year Countdown, Jan 17' : 'Lịch Tết 2026 - Đếm ngược Tết Bính Ngọ, mùng 1 Tết 17/2',
+    description: isEn
+      ? 'Countdown to Tet 2026. Lunar New Year Feb 17, 2026. Vietnam, China, timezone support.'
+      : 'Đếm ngược Tết 2026. Mùng 1 Tết Bính Ngọ 17/2/2026. Lịch nghỉ Tết, countdown. Múi giờ Việt Nam, Trung Quốc.',
+    keywords: isEn ? ['Tet 2026', 'Lunar New Year', 'Tet countdown'] : ['Tết 2026', 'mùng 1 Tết 2026', 'đếm ngược Tết', 'Tết Bính Ngọ', 'lịch nghỉ Tết'],
     openGraph: {
-      title: 'Lunar New Year Countdown',
-      description: 'Countdown to Lunar New Year with country & timezone support.',
+      title: isEn ? 'Tet 2026 Countdown' : 'Lịch Tết 2026 - Đếm ngược Tết Bính Ngọ',
+      description: isEn ? 'Countdown to Tet 2026, Lunar New Year Feb 17.' : 'Đếm ngược Tết 2026. Mùng 1 Tết 17/2.',
       url: pageUrl,
       type: 'website',
       locale: locale === 'vi' ? 'vi_VN' : 'en_US',
