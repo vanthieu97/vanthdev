@@ -8,27 +8,39 @@ import { getNewsTranslations, type Locale } from '@/lib/news-i18n';
 export function FeaturedArticles({
   embedded,
   locale: localeProp,
+  excludeHref,
+  titleVariant = 'featured',
 }: {
   embedded?: boolean;
   locale?: Locale;
+  /** Exclude this path from the list (e.g. current article href like /news/slug) */
+  excludeHref?: string;
+  /** 'featured' | 'related' - section title */
+  titleVariant?: 'featured' | 'related';
 }) {
   const localeFromHook = useLocale();
   const locale = (localeProp ?? localeFromHook) as Locale;
   const t = getNewsTranslations(locale);
+  const items = excludeHref
+    ? t.featured.filter((item) => item.href !== excludeHref)
+    : t.featured;
+  const sectionTitle = titleVariant === 'related' ? t.relatedTitle : t.featuredTitle;
+
+  if (items.length === 0) return null;
 
   return (
-    <section aria-label={t.featuredTitle}>
+    <section aria-label={sectionTitle}>
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div
-          className={`flex items-baseline gap-3 ${embedded ? 'mb-4' : 'mb-6'}`}
+          className={`flex items-center gap-3 ${embedded ? 'mb-4' : 'mb-6'}`}
         >
-          <span className="inline-block w-1 h-6 bg-[#c41e3a] rounded-full" aria-hidden />
+          <span className="inline-block w-1 h-8 shrink-0 bg-[#c41e3a] rounded-full" aria-hidden />
           <h2 className="text-xl md:text-2xl font-bold text-[#1a1a1a] dark:text-white/95 tracking-tight">
-            {t.featuredTitle}
+            {sectionTitle}
           </h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-          {t.featured.map(({ href, title, desc, tag, icon }) => (
+          {items.map(({ href, title, desc, tag, icon }) => (
             <Link
               key={href}
               href={getLocalizedPath(locale, href)}

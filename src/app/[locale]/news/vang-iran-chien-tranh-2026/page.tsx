@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Breadcrumb } from '@/components/breadcrumb';
+import { FeaturedArticles } from '../featured-articles';
 import { getCanonicalUrl, LOCALES, isValidLocale, type Locale } from '@/lib/i18n/config';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
@@ -300,6 +301,9 @@ export default function VangIranChienTranhPage({ params }: { params: { locale: s
           </p>
         </div>
       </article>
+      <div className="mt-12 md:mt-16 pb-8">
+        <FeaturedArticles excludeHref="/news/vang-iran-chien-tranh-2026" titleVariant="related" locale={locale} />
+      </div>
     </div>
   );
 }

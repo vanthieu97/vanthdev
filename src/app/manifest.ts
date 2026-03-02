@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'vanthdev.com - Tin tức, Đếm ngược Tết, Cúp C1',
     short_name: 'vanthdev',
     description:
-      'Tin tức Việt Nam, đếm ngược Tết Nguyên đán, Cúp C1 Champions League, Hệ Mặt Trời.',
+      'Tin tức tổng hợp, đếm ngược Tết Nguyên đán, Cúp C1 Champions League, Hệ Mặt Trời.',
     start_url: '/',
     display: 'standalone',
     background_color: '#faf8f5',

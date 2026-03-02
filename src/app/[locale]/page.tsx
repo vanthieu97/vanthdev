@@ -38,24 +38,24 @@ export async function generateMetadata({
   languages['x-default'] = getCanonicalUrl(baseUrl, 'vi', '/');
 
   return {
-    title: 'Tin tức Việt Nam - Tin nổi bật cập nhật liên tục',
+    title: 'Tin tức tổng hợp - Tin nổi bật cập nhật liên tục',
     description:
-      'Tin tức Việt Nam mới nhất, tin nổi bật trong ngày. Cập nhật liên tục từ các nguồn uy tín.',
-    keywords: ['tin tức Việt Nam', 'tin nổi bật', 'tin trong ngày', 'thời sự', 'news Vietnam'],
+      'Tin tức tổng hợp mới nhất, tin nổi bật trong ngày. Cập nhật liên tục từ các nguồn uy tín.',
+    keywords: ['tin tức tổng hợp', 'tin nổi bật', 'tin trong ngày', 'thời sự', 'news Vietnam'],
     openGraph: {
-      title: 'Tin tức Việt Nam - Tin nổi bật cập nhật liên tục',
+      title: 'Tin tức tổng hợp - Tin nổi bật cập nhật liên tục',
       description:
-        'Tin tức Việt Nam mới nhất, tin nổi bật trong ngày. Cập nhật liên tục từ các nguồn uy tín.',
+        'Tin tức tổng hợp mới nhất, tin nổi bật trong ngày. Cập nhật liên tục từ các nguồn uy tín.',
       url: pageUrl,
       siteName: 'vanthdev.com',
       type: 'website',
       locale: locale === 'vi' ? 'vi_VN' : 'en_US',
-      images: [{ url: '/og-news.png', width: 1200, height: 630, alt: 'Tin tức Việt Nam' }],
+      images: [{ url: '/og-news.png', width: 1200, height: 630, alt: 'Tin tức tổng hợp' }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Tin tức Việt Nam - Tin nổi bật cập nhật liên tục',
-      description: 'Tin tức Việt Nam mới nhất, tin nổi bật trong ngày.',
+      title: 'Tin tức tổng hợp - Tin nổi bật cập nhật liên tục',
+      description: 'Tin tức tổng hợp mới nhất, tin nổi bật trong ngày.',
     },
     alternates: {
       canonical: pageUrl,
@@ -77,7 +77,7 @@ export default function Home({ params }: { params: { locale: string } }) {
     '@type': 'WebSite',
     name: 'vanthdev.com',
     url: pageUrl,
-    description: 'Tin tức Việt Nam, đếm ngược Tết, Cúp C1 Champions League.',
+    description: 'Tin tức tổng hợp, đếm ngược Tết, Cúp C1 Champions League.',
   };
 
   return (

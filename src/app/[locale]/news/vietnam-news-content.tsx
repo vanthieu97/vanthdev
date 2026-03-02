@@ -40,10 +40,10 @@ export default async function VietnamNewsContent(props: { embedded?: boolean; lo
     : {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        name: localeSafe === 'vi' ? 'Tin tức Việt Nam - Tin nổi bật' : 'Vietnam News - Top stories',
+        name: localeSafe === 'vi' ? 'Tin tức tổng hợp - Tin nổi bật' : 'News - Top stories',
         description:
           localeSafe === 'vi'
-            ? 'Tin tức Việt Nam mới nhất, tin nổi bật trong ngày.'
+            ? 'Tin tức tổng hợp mới nhất, tin nổi bật trong ngày.'
             : 'Latest Vietnam news, top stories of the day.',
         numberOfItems: totalResults,
         itemListElement: articles.slice(0, 10).map(
@@ -119,8 +119,8 @@ export default async function VietnamNewsContent(props: { embedded?: boolean; lo
                 <span>📅</span>
                 <span>{t.today} — {getTodayFormatted(localeSafe)}</span>
               </div>
-              <div className="flex items-baseline gap-3 mb-2">
-                <span className="inline-block w-1 h-8 bg-[#c41e3a] rounded-full" aria-hidden />
+              <div className="flex items-center gap-3 mb-2">
+                <span className="inline-block w-1 h-8 shrink-0 bg-[#c41e3a] rounded-full" aria-hidden />
                 {embedded ? (
                   <h2 className="text-xl md:text-2xl font-bold text-[#1a1a1a] dark:text-white/95 tracking-tight">
                     {t.newsVietnam}

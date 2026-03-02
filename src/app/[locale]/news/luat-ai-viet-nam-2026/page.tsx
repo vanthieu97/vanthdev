@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Breadcrumb } from '@/components/breadcrumb';
+import { FeaturedArticles } from '../featured-articles';
 import { getCanonicalUrl, LOCALES, isValidLocale, type Locale } from '@/lib/i18n/config';
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com';
@@ -220,6 +221,9 @@ export default function LuatAIVietNam2026Page({ params }: { params: { locale: st
         </div>
 
       </article>
+      <div className="mt-12 md:mt-16 pb-8">
+        <FeaturedArticles excludeHref="/news/luat-ai-viet-nam-2026" titleVariant="related" locale={locale} />
+      </div>
     </div>
   );
 }

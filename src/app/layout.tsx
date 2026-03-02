@@ -11,7 +11,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'vanthdev.com',
-  description: 'Tin tức Việt Nam, Cúp C1 Champions League, giá vàng, review phim.',
+  description: 'Tin tức tổng hợp, Cúp C1 Champions League, giá vàng, review phim.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vanthdev.com'),
   openGraph: {
     siteName: 'vanthdev.com',

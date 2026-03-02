@@ -20,12 +20,13 @@ export const NEWS_TRANSLATIONS: Record<
     loadError: string;
     readArticle: string;
     featuredTitle: string;
+    relatedTitle: string;
     featured: Array<{ href: string; title: string; desc: string; tag: string; icon: string }>;
   }
 > = {
   vi: {
     home: 'Trang chủ',
-    newsVietnam: 'Tin tức Việt Nam',
+    newsVietnam: 'Tin tức tổng hợp',
     newsFromApi: 'Tin tức từ API',
     today: 'Hôm nay',
     topStories: 'Tin nổi bật',
@@ -36,6 +37,7 @@ export const NEWS_TRANSLATIONS: Record<
     loadError: 'Không thể tải thêm',
     readArticle: 'Đọc bài',
     featuredTitle: 'Bài viết nổi bật',
+    relatedTitle: 'Đọc thêm',
     featured: [
       {
         href: '/news/israel-tan-cong-iran',
@@ -104,7 +106,7 @@ export const NEWS_TRANSLATIONS: Record<
   },
   en: {
     home: 'Home',
-    newsVietnam: 'Vietnam News',
+    newsVietnam: 'News',
     newsFromApi: 'News from API',
     today: 'Today',
     topStories: 'Top stories',
@@ -115,6 +117,7 @@ export const NEWS_TRANSLATIONS: Record<
     loadError: 'Failed to load',
     readArticle: 'Read article',
     featuredTitle: 'Featured articles',
+    relatedTitle: 'Read more',
     featured: [
       {
         href: '/news/israel-tan-cong-iran',
