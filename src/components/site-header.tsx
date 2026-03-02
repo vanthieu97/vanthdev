@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from '@/contexts/theme-context';
 import { useLocale } from '@/hooks/use-locale';
@@ -28,7 +29,15 @@ export function SiteHeader() {
             href={getLocalizedPath(locale, '/')}
             className="vanthdev-btn-inner inline-flex cursor-pointer items-center gap-1.5 px-3 py-1.5 font-semibold text-sm no-underline text-[#1a1a1a] hover:text-[#c41e3a] transition-colors dark:text-white/95 dark:hover:text-amber-400"
           >
-            <img src="/vanthdev-logo.svg" alt="" width={28} height={28} className="shrink-0" />
+            <Image
+              src="/vanthdev-logo.svg"
+              alt=""
+              width={28}
+              height={28}
+              className="shrink-0"
+              priority
+              unoptimized
+            />
             {siteDisplayName}
           </Link>
         </span>

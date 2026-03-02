@@ -8,9 +8,9 @@ const COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year in seconds
 export type Locale = 'vi' | 'en';
 
 function getBrowserLocale(): Locale {
-  if (typeof navigator === 'undefined') return 'en';
-  const lang = navigator.language ?? navigator.languages?.[0] ?? 'en';
-  return lang.toLowerCase().startsWith('vi') ? 'vi' : 'en';
+  if (typeof navigator === 'undefined') return 'vi';
+  const lang = navigator.language ?? navigator.languages?.[0] ?? 'vi';
+  return lang.toLowerCase().startsWith('en') ? 'en' : 'vi';
 }
 
 function getLocaleFromCookie(): Locale | null {
@@ -48,7 +48,7 @@ type LocaleProviderProps = {
 };
 
 export function LocaleProvider({ children, initialLocale = null }: LocaleProviderProps) {
-  const [locale, setLocaleState] = useState<Locale>(() => initialLocale ?? 'en');
+  const [locale, setLocaleState] = useState<Locale>(() => initialLocale ?? 'vi');
 
   useEffect(() => {
     if (initialLocale != null) return;

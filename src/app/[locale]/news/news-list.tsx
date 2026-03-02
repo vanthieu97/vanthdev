@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { trackArticleClick, trackLoadMoreClick } from '@/lib/ga';
 import { getNewsTranslations } from '@/lib/news-i18n';
@@ -76,14 +77,15 @@ function ArticleCard({
       className="group bg-white rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] border border-[#eee] dark:bg-[#2d2d3d]/90 dark:border-[#4a4a5a]/60 dark:shadow-lg dark:shadow-black/20 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:border-[#e0e0e0] dark:hover:border-[#5a5a6a] dark:hover:bg-[#333344]/95 hover:-translate-y-1 flex flex-col text-left focus:outline-none focus:ring-2 focus:ring-[#c41e3a] focus:ring-offset-2 focus:ring-offset-[#faf8f5] dark:focus:ring-offset-[#0a0f1a]"
       aria-label={`${readArticle}: ${article.title}`}
     >
-      <div className="aspect-[16/10] overflow-hidden bg-[#e8e6e3] dark:bg-[#1a1a2e]">
+      <div className="aspect-[16/10] relative overflow-hidden bg-[#e8e6e3] dark:bg-[#1a1a2e]">
         {article.image_url ? (
-          <img
+          <Image
             src={article.image_url}
             alt=""
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            unoptimized
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-[#e0ddda] to-[#d4d1cd] dark:from-[#2a2a3d] dark:to-[#1e1e2e] flex items-center justify-center">

@@ -7,9 +7,7 @@ const COOKIE_NAME = 'locale';
 function getLocaleFromRequest(request: NextRequest): string {
   const cookie = request.cookies.get(COOKIE_NAME)?.value;
   if (cookie && isValidLocale(cookie)) return cookie;
-  const acceptLang = request.headers.get('accept-language') ?? '';
-  const preferred = acceptLang.split(',')[0]?.split('-')[0]?.toLowerCase();
-  return preferred === 'en' ? 'en' : DEFAULT_LOCALE;
+  return DEFAULT_LOCALE;
 }
 
 export function middleware(request: NextRequest) {

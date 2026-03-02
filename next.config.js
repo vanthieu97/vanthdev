@@ -66,6 +66,36 @@ const nextConfig = {
         hostname: 'www.cgv.vn',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 's1.vnecdn.net',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'vnexpress.net',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'thanhnien.vn',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tuoitre.vn',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn-i.pr.de',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        pathname: '/**',
+      },
     ],
   },
   async redirects() {

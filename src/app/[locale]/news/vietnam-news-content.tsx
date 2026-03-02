@@ -18,7 +18,7 @@ function getTodayFormatted(locale: Locale): string {
   });
 }
 
-export async function VietnamNewsContent(props: { embedded?: boolean; locale?: string }) {
+export default async function VietnamNewsContent(props: { embedded?: boolean; locale?: string }) {
   const { embedded = false, locale = 'vi' } = props ?? {};
   const localeSafe: Locale = locale === 'en' ? 'en' : 'vi';
   const t = getNewsTranslations(localeSafe);

@@ -1,4 +1,4 @@
-import { VietnamNewsContent } from './vietnam-news-content';
+import VietnamNewsContent from './vietnam-news-content';
 import { isValidLocale, type Locale } from '@/lib/i18n/config';
 
 export const dynamic = 'force-dynamic';
